@@ -7,6 +7,10 @@
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{booktabs,tabularx,array}
 \usepackage{graphicx,xcolor}
+\usepackage{caption}
+\usepackage{float}
+\usepackage[section]{placeins}
+\captionsetup{font=small,labelfont=bf,skip=7pt}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,calc}
 \usepackage{enumitem}
@@ -18,7 +22,7 @@
 \definecolor{accent}{HTML}{185F76}
 \definecolor{pale}{HTML}{F0F5F7}
 \definecolor{rule}{HTML}{CED9DF}
-\hypersetup{pdftitle={Explicit versus learned search},pdfauthor={Angel Raychev},pdfsubject={Technical retrospective on neural-guided tree search and search-trace learning},pdfkeywords={MCTS,language models,Stream of Search,value learning,search distillation}}
+\hypersetup{pdftitle={Explicit versus learned search},pdfauthor={Angel Raychev},pdfsubject={Methods and historical empirical results for neural-guided tree search and search-trace learning},pdfkeywords={MCTS,language models,Stream of Search,value learning,search distillation}}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small\sffamily\color{ink}Explicit versus learned search}
@@ -58,9 +62,11 @@
 \vspace{11pt}
 \textbf{Overview.} A language model can participate in search in two different ways: an external program can maintain a tree and ask learned models which branches to expand, or a model can learn to represent exploration inside its own generated sequence. I built a research pipeline connecting these approaches: batched neural-guided tree search, iterative policy and value training, and supervised learning from serialized search traversals. The common intermediate object is a search tree; different projections of that tree become different learning signals.
 
-This report explains the implementation and the questions it was designed to investigate. The design centers on the controller/state boundary, the separation of proposal and evaluation, the three tree-to-training data contracts, and the alignment between step-level value targets and model outputs. Those interfaces determine what a comparison between explicit and learned search actually measures.
+The experiments connect three levers: improving the learned models, allocating more inference-time search, and teaching a model to generate the search procedure itself. In the earlier Game of 24 study, separately selected search configurations reached reported accuracies of 29.39\%, 53.44\% and 54.58\% for same-size 135M, 360M and 1.7B policy/value pairs. The later generalized-arithmetic study reported a budget-dependent crossover between externally controlled search and traversal-trained models. These observations motivate a joint view of learning and search rather than a single winner determined by model size.
 
-\smallnote{Scope: this is my retrospective, not a new joint manuscript or a new empirical study. It preserves the credit and identity of the original Stanford CS224N and CS224R projects. No new model training or evaluation was performed for this document. Historical methods are described from the original reports and source; refreshed reuse tooling is distinguished from historical experimental evidence.}
+The methods and experiments tell one connected story: an efficient external search engine supplies experience for policy learning, value learning and search-trace learning; the resulting models then change what can be achieved at inference time. The report follows that connection from implementation to empirical trade-offs.
+
+\smallnote{Scope: a retrospective by Angel Raychev on joint 2025 work, preserving the original collaborators' credit. Numerical results and original plots are from the historical studies; no new model training or evaluation was performed. Different stages and search budgets remain explicitly distinguished.}
 
 \section{The question is where search happens}
 Both approaches use neural networks. ``Explicit'' does not mean non-neural, and ``learned'' does not mean that the alternative has no learned components. The operational contrast is where branching decisions and revisitable state live.
@@ -257,25 +263,8 @@ The tokenizer identifies tokens whose decoded text contains a newline. The datas
 
 At inference, the value service takes the same designated vocabulary logit at the end of a supplied prefix and applies a sigmoid. Keeping the value readout inside the ordinary language-model head makes the later value model compatible with the vLLM-based serving path. The important design is the agreement among data boundaries, loss mask, readout position and inference-time extraction.
 
-\subsection{Two historical stages, not one interchangeable configuration}
-The project evolved between the two Stanford reports. Their task distributions, model families and value implementations must remain distinguishable.
-
-\begin{table}[ht]
-\small
-\begin{tabularx}{\linewidth}{@{}p{0.18\linewidth}YY@{}}
-\toprule
- & CS224N stage & CS224R stage \\
-\midrule
-Task & Game of 24 & Generalized arithmetic target \\
-Model framing & SmolLM2 policy/value size combinations & Qwen-based policy/value search and a separate search-trace model \\
-Value readout & A custom scalar head described in the original report & A designated vocabulary logit, sigmoid and masked step-level training in the later source \\
-Learning focus & Iterative policy/value data generation and capacity/allocation sweeps & Search-to-policy/value/traversal data, followed by search-trace learning and self-training \\
-\bottomrule
-\end{tabularx}
-\caption{Methodological continuity does not make the two experimental setups identical. These descriptions identify the historical stages; they are not a new matched performance comparison.}
-\end{table}
-
-The CS224N report describes a separate nonlinear value head served with PyTorch/FastAPI. The later vocabulary-logit approach supports a different serving path. Architecture, checkpoints and results should be attributed to the appropriate stage.
+\subsection{The value interface evolved with the system}
+The earlier SmolLM2/Game of 24 implementation uses a separate nonlinear scalar head served with PyTorch/FastAPI. The later Qwen-based source instead uses the vocabulary-logit readout described above, supporting vLLM-based serving. The learning/search interface carries across the two stages, while the readout implementation and task distribution change. Table~\ref{tab:recipes} records the experimental setups together.
 
 \smallnote{Implementation anchors: \src{generate_data/mcts_generator.py}{generator}, \src{train/value_trainer.py}{step-value trainer}, \src{utils/deployer_value.py}{value server} and \src{train/policy_trainer.py}{policy trainer}.}
 
@@ -318,48 +307,138 @@ The project also implements a STaR-style self-training path: generate candidate 
 
 The external controller and the learned traversal model are therefore connected by more than a shared benchmark. Search builds a teacher distribution; serialization determines what the student sees; supervised learning and rejection self-training determine how that experience is absorbed into later generation.
 
-\section{What the experiments were designed to investigate}
-The original work explored interactions among model capacity, training iteration and inference-time search. Its engineering supports several useful, separable research questions.
+\clearpage
+\section{Experiments and empirical results}
+\label{sec:results}
+The experiments progressed through two stages. The CS224N study examined how policy capacity, value capacity, iterative training and inference search interact on Game of 24. The CS224R extension generalized the target and asked how the externally managed search compares with models trained on its traversals. The stages share a learning/search architecture, but not one task distribution or checkpoint family.
 
-\textbf{How should compute be divided between proposing and evaluating?} A stronger policy can supply better candidates; a stronger value model can rank or direct them more effectively. Independent policy/value choices expose that interaction instead of treating ``the model'' as one undifferentiated object.
+\subsection{Experimental recipes}
+\begin{table}[H]
+\centering\small
+\begin{tabularx}{\linewidth}{@{}p{0.19\linewidth}YY@{}}
+\toprule
+ & Game of 24 study & Generalized-arithmetic study \\
+\midrule
+Model family & SmolLM2, independently varied 135M, 360M and 1.7B policy/value models & Reported Qwen2.5 1.5B policy and 1.5B value; 3B traversal model \\
+Task & Combine four supplied numbers to reach 24 & Four integers in $[1,12]$, target in $[1,999]$ \\
+Collection search & Branch factor 3, up to 20 expansions, exploration constant 0.3 & Branch factor 5, up to 25 expansions, exploration constant 0.3 \\
+Learning & Format SFT, followed by successful-path policy training and positive/negative value training & Iterative policy/value training, then traversal SFT and rejection self-training \\
+Evaluation focus & Capacity matrix, training rounds, breadth/expansion sweeps & MCTS checkpoints and SoS/STaR comparisons across traversal/search settings \\
+\bottomrule
+\end{tabularx}
+\caption{The recipes described in the original reports. Collection settings are not the larger inference-search sweeps. Model sizes in the final CS224R account differ from earlier 0.5B development runs retained in the repository.}
+\label{tab:recipes}
+\end{table}
 
-\textbf{How should exploration be divided between breadth and repeated expansion?} A branch factor changes how many candidates an expansion proposes. The expansion budget changes how much of the tree can be developed. Their product is a rough operation count, not a complete accounting of neural inference cost or of the information that the search actually gains.
+The later report describes a pool of 105,000 problems with a 99,000/3,000/3,000 train/validation/test split. Policy formatting is bootstrapped with synthetic worked solutions. Subsequent rounds collect new terminal trajectories and train the policy on accepted paths and the value model on labeled prefixes. The collection recipe samples five candidate continuations at temperature 1 and filters duplicates.
 
-\textbf{What does an additional learning round buy?} Repeated collection with updated models changes the next training distribution. A policy may learn more productive continuations; a value model may better distinguish promising prefixes. Those effects must be separated from merely spending additional teacher-search compute.
+For traversal learning, the final policy/value teacher is frozen. The report describes 12,000 fresh questions, traversal collections with branch factors $\{1,2,3,5,8,13,21\}$, and a separately fine-tuned search model for each setting. Traversal SFT uses 16 epochs, learning rate $2\times10^{-5}$ and batch size 64. The two reported rejection self-training variants use one attempt per question (STaR) or up to ten attempts, retaining the first accepted completion (STaR$^*$). These are the historical recipes, not newly executed runs.
 
-\textbf{Which aspects of search transfer into a token sequence?} Traversal supervision preserves alternatives and branch references that path-only SFT discards. The important question is not whether the sequence visually resembles deliberation, but whether the learned procedure remains effective as task depth, branching or the available inference budget changes.
+\subsection{Proposal and evaluation capacity interact}
+The earlier study independently varied both components, producing a full nine-configuration matrix rather than only scaling one monolithic model. Table~\ref{tab:capacity} preserves the numerical entries from the original LaTeX.
 
-\subsection{Accounting that keeps a comparison interpretable}
-A model parameter count is not an inference budget. A policy--value pair and a single traversal model can have similar total parameter counts but incur different costs through model calls, prefix lengths, batching and generated tokens. A useful accounting separates
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+ & \multicolumn{3}{c}{Policy size} \\
+\cmidrule(lr){2-4}
+Value size & 135M & 360M & 1.7B \\
+\midrule
+135M & $12.29\pm1.40$ & $20.31\pm0.56$ & $18.93\pm1.40$ \\
+360M & $15.95\pm1.30$ & $26.35\pm0.99$ & $25.42\pm1.04$ \\
+1.7B & $10.53\pm1.47$ & $24.20\pm2.30$ & $26.87\pm1.55$ \\
+\bottomrule
+\end{tabular}
+\caption{Reported Game of 24 accuracy (\%) at the study's common search setting. Rows vary value capacity; columns vary policy capacity. The original mean $\pm$ SD notation is retained without reinterpreting the dispersion as independent random seeds or confidence intervals. Source: CS224N report, capacity table~\cite{originaln}.}
+\label{tab:capacity}
+\end{table}
+
+For the 135M policy, moving from the 135M to the 360M value model raises reported accuracy from 12.29\% to 15.95\%. Increasing the value model further to 1.7B instead gives 10.53\%. With the 1.7B policy, the largest value model yields the highest entry in that column, 26.87\%. Increasing evaluator capacity is therefore not uniformly beneficial across proposal models in these observations.
+
+The matrix exposes a systems-level design choice. The policy determines which candidates exist to be evaluated; the value model influences which of those candidates receive further exploration. Increasing one component's capacity does not by itself determine the quality of that interaction.
+
+\subsection{Training improves the search curve}
+Figure~\ref{fig:n-training} shows that gains were not obtained only by growing a fixed model's tree. Iteration 2 of the 135M/135M system lies above iteration 1 over the displayed range: updating from search-generated trajectories improves the system that performs the next search.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.83\linewidth]{figures/cs224n-training.png}
+\caption{The original Game of 24 training-round figure, recovered from Overleaf. Both policy and value are 135M. The plotted comparison is iteration 1 versus iteration 2; it is not an iteration-0 curve. The x-axis retains the original estimated-compute convention and its historical label.}
+\label{fig:n-training}
+\end{figure}
+
+Figure~\ref{fig:n-size} gives the corresponding size/search view. The reported curves show the 360M and 1.7B systems benefiting over a broader explored range than the first-round 135M system. Table~\ref{tab:peaks} records the separately selected peak configurations, including the later 135M result; the 29.39\% peak should not be confused with the lower first-round 135M curve in Figure~\ref{fig:n-size}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.83\linewidth]{figures/cs224n-capacity-search.png}
+\caption{Original same-size policy/value search sweeps from the CS224N study. Each legend entry names both model sizes in millions of parameters. The horizontal coordinate is the report's estimated resource measure, not a new measurement of end-to-end inference cost.}
+\label{fig:n-size}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Policy / value & Accuracy (\%) & Branch factor & Expansions \\
+\midrule
+135M / 135M & 29.39 & 16 & 64 \\
+360M / 360M & 53.44 & 20 & 102 \\
+1.7B / 1.7B & 54.58 & 13 & 79 \\
+\bottomrule
+\end{tabular}
+\caption{Highest reported accuracy and its configuration in the CS224N appendix. All three use temperature 1.0 and exploration constant 0.3. These are separately chosen search settings, not matched-compute points or a claim that model capacity is irrelevant.}
+\label{tab:peaks}
+\end{table}
+
+Training and inference search are thus complementary levers. A better learned policy/value pair can shift the curve; a larger search budget explores more alternatives using that pair. The broad empirical question is how to allocate effort across both, rather than whether either learning or search can be removed.
+
+\subsection{External search versus internalized traversal}
+The later study applies the same learning/search cycle to generalized targets. Figure~\ref{fig:r-training} compares successive MCTS checkpoints. The final report records 51.13\% accuracy at its final checkpoint over the wider explored search range.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.69\linewidth]{figures/cs224r-training.png}
+\caption{Original CS224R MCTS checkpoint curves, recovered from the final-report Overleaf project. The axes retain the original token-budget convention. This is a separate experiment stage from the SmolLM2/Game of 24 figures above.}
+\label{fig:r-training}
+\end{figure}
+
+The central comparison is Figure~\ref{fig:r-comparison}. A traversal-trained model can use a single generated sequence to represent alternatives that the external system maintains in memory. The reported SoS and self-trained variants exceed MCTS over much of the lower and middle plotted range. At the largest displayed setting, external MCTS overtakes them while the contextual variants decline. The displayed crossover is the finding; it does not require declaring a universal winner.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.69\linewidth]{figures/cs224r-comparison.png}
+\caption{The original final-report comparison of MCTS, SoS and two rejection-self-training variants. Different SoS points correspond to models trained with different traversal settings, not necessarily to stopping one frozen model at different budgets. The rightmost MCTS point here is not the separate wider-range 51.13\% result. Source: original CS224R Figure 2~\cite{originalr}.}
+\label{fig:r-comparison}
+\end{figure}
+
+The original discussion proposes context length as an explanation for the long-trace decline. The plot establishes the observed decline, but not its cause. Longer traversals also change the supervision and generation workload. Distinguishing those mechanisms would require a separate controlled experiment.
+
+\FloatBarrier
+\subsection{What the combined evidence tells us}
+Three observations carry the main message. First, proposal and evaluation are independently trainable components whose capacities interact. Second, iterating on search-generated experience can improve the next search, not just its final answer format. Third, teaching the traversal creates a different resource/performance profile from maintaining the tree externally. These are concrete empirical and engineering results even though the larger efficiency/generalization question remains open.
+
+\smallnote{Interpretation of the historical figures. These are the reported 2025 results, recovered from the original LaTeX and image assets. Refreshed arithmetic checks do not constitute a rerun or retrospective rescoring. The historical axes include resource proxies rather than newly measured end-to-end FLOPs; equal total parameter counts do not equalize neural calls, prefix processing or teacher-search cost. The observations do not establish a universal or asymptotic separation. Appendix~\ref{sec:empirical-appendix} records the remaining provenance distinctions.}
+
+\section{Discussion: a joint allocation of learning and search}
+The useful resource question has two timescales. During construction, search produces successful paths, value targets and traversal supervision. During use, a trained system either calls learned models inside an external controller or emits its own search representation. A useful accounting separates
 \begin{equation}
 C_{\mathrm{total}}(n)=C_{\mathrm{training}}+C_{\mathrm{teacher\ search}}
 +\sum_{i=1}^{n}C_{\mathrm{inference}}(q_i).
 \end{equation}
-This identity is an accounting frame, not a fitted cost model or a reported measurement. It makes amortization explicit: an expensive construction/training process may be worthwhile when reused across many future queries.
+This is an accounting frame, not a fitted cost model. The teacher-search investment can be amortized across later questions, but it must still be counted when comparing complete learning systems.
 
-For a new controlled study, each comparison should fix or explicitly vary the legal action language, state access, training data, verifier access and final-selection rule. It should record both discovery and selected-answer success, along with policy/value calls, token lengths, elapsed time and context limits. A fixed parameter total or an output-token threshold alone does not equalize those resources.
+The external controller offers explicit branch identity, revisitable state and replaceable selection rules. The internalized model conditions each new decision on its preceding search sequence. Those interfaces have different strengths, and hybrids can retain explicit state while learning more of the control. A fair continuation would specify the resource or generalization contrast first, then hold the remaining information and training conditions fixed.
 
-\subsection{The result this retrospective does and does not assert}
-The implemented pipeline and released artifacts establish substantive work on neural-guided search, custom value learning and search-to-training interfaces. This report does not reissue historical accuracy curves as newly verified results, infer a universal winner, or claim an asymptotic capability separation from finite-budget arithmetic experiments. The original reports remain the primary record of their respective studies.
-
-For a finite arithmetic task with complete legal enumeration, exhaustive search can in principle find an existing solution. The scientifically meaningful contrasts concern resource efficiency, learned control, representation and generalization under stated constraints. An empirical plateau is not by itself a proof that a method can never benefit from additional computation.
+For a finite arithmetic task with complete legal enumeration, exhaustive search can in principle find an existing solution. The scientific issue is therefore not escaping finite enumeration. It is how effectively the system spends limited computation, what its training amortizes, and how well that behavior transfers beyond the training distribution.
 
 \section{Artifacts, reuse and contribution}
 The \repo{} contains the search engine, policy/value interface, data generator, trainers and experiment scripts. Historical source is linked at the June 2025 snapshot throughout this report. Public policy, value and search-trace model artifacts make the training pipeline inspectable beyond its implementation: readers can inspect experimental weights, configurations and model cards.
 
-The refreshed companion materials separate inspection and reuse from the original study. Clearer instructions, exact arithmetic checking and output accounting do not retroactively rescore old model outputs. Local CPU integrity checks exercise defined data/verification boundaries; model training and evaluation additionally require the appropriate data, model access, serving environment and GPU resources.
+The companion materials now bring the methods, original result figures and numerical tables into one current report. The repository also retains an independently identified archive of earlier evaluation records and plotting data, rather than silently merging them with the final-report figures. Local CPU integrity checks exercise defined data/verification boundaries; model-backed execution additionally requires the appropriate data, model access, serving environment and GPU resources.
 
-\subsection{A compact reproducibility contract}
-An interpretable execution record should associate every result with:
-\begin{enumerate}
-\item the task definition, canonical problem split and exact checker version;
-\item immutable policy, value and traversal model revisions, plus tokenizer settings;
-\item generation configuration, tree budgets and the final-selection rule;
-\item the teacher-search data and the distinct policy/value/traversal projections;
-\item actual completed outcomes and denominators, not only a presentation-layer scalar;
-\item measured or explicitly approximated training and inference resources.
-\end{enumerate}
-This is a contract for reusable evidence, not a claim that all historical runs have been reconstructed. No new GPU run was required to document the architecture or to preserve the available sources.
+The source package builds this report with its original empirical figures and vector architecture diagrams, without model inference. The evidence archive identifies historical records by source commit and blob, preserving actual model IDs and duplicate-snapshot relationships. Its inspection and plot-recreation tools operate only on retained data. Reproducing the full training study additionally requires the original splits, compatible model/tokenizer revisions, serving environment and resource configuration.
 
 \subsection{My contribution and the original collaboration}
 The work began as a joint Stanford CS224N project by Yalcin Tur, Mihajlo Stojkovic and me. The original report credits me with MCTS implementation, evaluation and writing; it credits Yalcin and Mihajlo with policy/value training, data generation and infrastructure for that stage.
@@ -371,15 +450,54 @@ This retrospective is authored by me. The two original reports retain their orig
 \takeaway{The reusable idea is to treat search as both an inference procedure and a producer of structured learning signals. Which parts should remain in an external controller, which should be represented in context, and which should be amortized into model parameters is a joint systems-and-learning question.}
 
 \smallskip
-\textbf{Resources.} \href{https://angelraychev.com/explicit-versus-learned-search/}{Project article and downloads}; \repo{}; \href{https://huggingface.co/AngelRaychev}{public model artifacts}; and the \href{https://cs224r.stanford.edu/spring_2025/projects/pdfs/CS_224R_Final_Report__3_%20%281%29.pdf}{original Stanford CS224R report}.
+\textbf{Resources.} \href{https://angelraychev.com/explicit-versus-learned-search/}{Project article and report}; \repo{}; and \href{https://huggingface.co/AngelRaychev}{public model artifacts}.
 
 \clearpage
+\appendix
+\section{Additional empirical detail and source record}
+\label{sec:empirical-appendix}
+\subsection{Breadth and repeated expansion}
+The original branch/expansion sweeps vary two different decisions: how many candidates an expansion proposes, and how many expansion steps the controller takes. More expansions are not the same as greater arithmetic solution depth. Figure~\ref{fig:contours} retains the original contour views; the red points mark measured configurations and the colored surfaces interpolate between them.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.48\linewidth]{figures/cs224n-search-135m.png}\hfill
+\includegraphics[width=0.48\linewidth]{figures/cs224n-search-360m.png}
+\par\smallskip
+\includegraphics[width=0.48\linewidth]{figures/cs224n-search-1700m.png}
+\caption{Original Game of 24 branch/expansion plots for the 135M, 360M and 1.7B same-size policy/value systems, respectively. Interpolated regions are visual summaries, not additional measured runs. Recovered from the CS224N Overleaf project.}
+\label{fig:contours}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+Branches & Expansions & 135M / 135M & 360M / 360M & 1.7B / 1.7B \\
+\midrule
+2 & 8 & 11.83 & 24.05 & 20.61 \\
+3 & 21 & 17.94 & 29.77 & 27.86 \\
+4 & 16 & 22.52 & 34.73 & 37.02 \\
+\bottomrule
+\end{tabular}
+\caption{Selected same-search-setting accuracies (\%) transcribed from the original CS224N appendix. Matching branch/expansion counts does not match neural compute across different model sizes. Temperature is 1.0 and exploration constant 0.3.}
+\end{table}
+
+\FloatBarrier
+\subsection{How the consolidated evidence was assembled}
+The original Overleaf projects supplied the numerical tables and unmodified plot images. The original reports retain their author order and identity; this consolidated retrospective credits that work while explaining the implementation and results together.
+
+The original CS224N split description contains an unresolved counting inconsistency, so this report does not invent a corrected evaluation denominator. Its capacity table's SD is retained as originally reported; the surviving source does not establish a new random-seed interpretation. The later report's declared model sizes and recipes are attributed to that report, rather than inferred from similarly named public checkpoints.
+
+The older Git plotting script and timestamped evaluation records are useful additional evidence, but belong to earlier configurations. In particular, the older plotting arrays have different peaks and fewer contextual-search points than the final CS224R figures. They are archived separately with commit provenance. No curve has been numerically digitized from an image, and no final-report datapoint has been manufactured by joining those different records.
+
 \section*{Research context and primary references}
 \addcontentsline{toc}{section}{Research context and primary references}
 The work sits at the intersection of neural-guided external search and learned representations of search. TS-LLM studies AlphaZero-like tree search for language-model decoding and training~\cite{tsllm}. Stream of Search provides a direct precedent for encoding exploration as a flattened language sequence~\cite{sos}. STaR supplies the broader generate--verify--train self-improvement context~\cite{star}. Schultz and colleagues explicitly contrast external and internal planning with language models in board games~\cite{schultz}. These connections explain the project's framing; this retrospective does not claim that either broad approach was introduced here.
 
 \begin{thebibliography}{9}
-\setlength{\itemsep}{8pt}
+\small
+\setlength{\itemsep}{4pt}
 \bibitem{originaln}
 Yalcin Tur, Mihajlo Stojkovic and Angel Raychev.
 \emph{Size Doesn't Matter If You Search Enough}. Stanford CS224N custom project report, 2025.

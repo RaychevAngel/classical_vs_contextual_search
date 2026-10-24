@@ -23,6 +23,12 @@ results/
 /results/
 **/results/
 
+# Track only the curated, immutable historical-evidence archive.
+!/results/
+/results/*
+!/results/archive/
+!/results/archive/**
+
 # Exclude shell scripts
 *.sh
 
@@ -66,4 +72,4 @@ ENV/
 .idea/
 .vscode/
 *.swp
-*.swo 
+*.swo

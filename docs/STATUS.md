@@ -25,11 +25,23 @@ The [public Stanford report](https://cs224r.stanford.edu/spring_2025/projects/pd
 
 The corrected checker accepts fractional/negative intermediate calculations but does not independently validate each narrated intermediate step. It defines a precise final-expression contract; it does not retroactively establish what outputs historical runs produced.
 
+## Historical evidence recovery — 23 October 2026
+
+The [compact results archive](../results/archive/README.md) restores exact deleted artifacts from ordinary git history: 22 evaluation-YAML versions and seven plotting-source versions, with source paths, blob identities and SHA-256 hashes. The YAML contains 473 records across cumulative snapshots, deduplicated into 210 distinct full-record dictionaries with every occurrence retained. Two syntax-only list repairs in one original YAML blob are explicit in the manifest; exact original bytes remain unchanged.
+
+These are earlier 0.5B policy/value experiments, timestamped 28 April–12 May 2025 where recorded, not a reconstructed raw-data bundle for the final CS224R 1.5B-policy/1.5B-value versus 3B-SoS study. All literal plotting points and all recovered source versions are available. Offline plot recreation retains lower as well as higher observations, identifies budget products as proxies rather than measured tokens, and does not add interpolated observations.
+
+```bash
+python3 -S results/archive/inspect_artifacts.py
+```
+
+This standard-library command verifies every archived source/derived hash, complete deduplicated occurrence coverage, and exact recovery of plotting literals without importing the original scripts. Replotting requires matplotlib separately; no inference or historical rescoring is involved.
+
 ## Evidence boundaries
 
-Implemented search/training mechanisms, source history and released experimental checkpoint files are inspectable. A full original raw-results/checkpoint/data manifest is not packaged here. In particular, an initial model snapshot is not necessarily a trained checkpoint, and linked checkpoints need not form one matched experimental configuration.
+Implemented search/training mechanisms, source history, recovered scalar summaries/literal plotting arrays and released experimental checkpoint files are inspectable. A full original raw-results/checkpoint/data manifest is not packaged here. In particular, an initial model snapshot is not necessarily a trained checkpoint, and linked checkpoints need not form one matched experimental configuration.
 
-Historical figure provenance and compute comparisons need fresh qualification before reusing their performance conclusions. Replacing the checker or an export field cannot rescore outputs that have not been recovered. No result, speedup or scaling law has been newly established by this maintenance.
+The final CS224R report's original figures are preserved in the canonical report, but their complete mapping to raw runs is not established by the earlier recovered summaries. Different model sizes, study phases, rounded literal tables and scalar summaries are not silently merged. Replacing the checker or an export field cannot rescore outputs that have not been recovered. No result, speedup or scaling law has been newly established by this maintenance or evidence recovery.
 
 ## A possible new study—not an executed result
 

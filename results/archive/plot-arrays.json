@@ -1,0 +1,3962 @@
+{
+  "schema_version": 1,
+  "source_versions": [
+    {
+      "git_blob": "0986bb58ee6a8ac927dd87f65bb2769cb8928cd0",
+      "historical_path": "results/create_plots.py",
+      "arrays": [
+        {
+          "literal_name": "data",
+          "kind": "mcts_checkpoint_grid",
+          "units": "accuracy_percent",
+          "points": [
+            {
+              "branch_factor": 1,
+              "max_expansions": 4,
+              "accuracies_pct": [
+                2.63,
+                6.37,
+                21.07,
+                21.07,
+                21.9,
+                22.53,
+                22.33
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 6,
+              "accuracies_pct": [
+                4.43,
+                9.83,
+                25.37,
+                25.93,
+                27.1,
+                27.07,
+                27.33
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 8,
+              "accuracies_pct": [
+                6.47,
+                11.43,
+                27.6,
+                27.9,
+                28.87,
+                28.67,
+                28.87
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 10,
+              "accuracies_pct": [
+                7.2,
+                12.37,
+                27.87,
+                28.0,
+                29.03,
+                28.73,
+                29.07
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 9,
+              "accuracies_pct": [
+                6.82,
+                13.1,
+                28.97,
+                30.63,
+                31.33,
+                31.0,
+                32.57
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 12,
+              "accuracies_pct": [
+                9.75,
+                15.7,
+                30.3,
+                31.43,
+                32.1,
+                31.73,
+                33.13
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 15,
+              "accuracies_pct": [
+                11.25,
+                17.37,
+                30.53,
+                31.6,
+                32.27,
+                31.9,
+                33.13
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 10,
+              "accuracies_pct": [
+                7.23,
+                11.77,
+                32.23,
+                32.33,
+                34.0,
+                34.27,
+                34.97
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 15,
+              "accuracies_pct": [
+                11.0,
+                17.67,
+                34.7,
+                34.63,
+                36.33,
+                36.23,
+                37.33
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 20,
+              "accuracies_pct": [
+                13.97,
+                20.77,
+                35.57,
+                34.97,
+                36.53,
+                36.53,
+                37.7
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 16,
+              "accuracies_pct": [
+                10.43,
+                14.57,
+                36.1,
+                37.27,
+                38.17,
+                38.87,
+                38.87
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 24,
+              "accuracies_pct": [
+                14.53,
+                19.63,
+                37.93,
+                38.4,
+                39.5,
+                39.83,
+                39.83
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 32,
+              "accuracies_pct": [
+                16.8,
+                22.0,
+                38.13,
+                38.7,
+                39.4,
+                39.93,
+                39.9
+              ]
+            },
+            {
+              "branch_factor": 13,
+              "max_expansions": 26,
+              "accuracies_pct": [
+                9.23,
+                17.43,
+                39.43,
+                40.1,
+                41.93,
+                40.97,
+                41.9
+              ]
+            },
+            {
+              "branch_factor": 13,
+              "max_expansions": 39,
+              "accuracies_pct": [
+                15.37,
+                21.57,
+                39.83,
+                40.67,
+                42.17,
+                41.37,
+                42.43
+              ]
+            },
+            {
+              "branch_factor": 13,
+              "max_expansions": 52,
+              "accuracies_pct": [
+                18.23,
+                23.0,
+                40.07,
+                40.63,
+                42.13,
+                41.33,
+                42.37
+              ]
+            },
+            {
+              "branch_factor": 21,
+              "max_expansions": 42,
+              "accuracies_pct": [
+                10.77,
+                17.43,
+                40.67,
+                41.9,
+                42.93,
+                43.07,
+                43.1
+              ]
+            },
+            {
+              "branch_factor": 21,
+              "max_expansions": 63,
+              "accuracies_pct": [
+                15.83,
+                21.1,
+                41.4,
+                42.03,
+                42.9,
+                42.97,
+                43.23
+              ]
+            },
+            {
+              "branch_factor": 21,
+              "max_expansions": 84,
+              "accuracies_pct": [
+                18.63,
+                23.17,
+                41.33,
+                41.87,
+                42.9,
+                42.9,
+                43.1
+              ]
+            },
+            {
+              "branch_factor": 34,
+              "max_expansions": 68,
+              "accuracies_pct": [
+                11.67,
+                17.27,
+                42.73,
+                43.43,
+                44.6,
+                44.0,
+                44.86
+              ]
+            },
+            {
+              "branch_factor": 34,
+              "max_expansions": 102,
+              "accuracies_pct": [
+                16.57,
+                20.13,
+                42.63,
+                43.13,
+                44.27,
+                43.83,
+                44.42
+              ]
+            },
+            {
+              "branch_factor": 34,
+              "max_expansions": 136,
+              "accuracies_pct": [
+                18.8,
+                21.97,
+                42.4,
+                43.2,
+                44.1,
+                43.77,
+                44.38
+              ]
+            },
+            {
+              "branch_factor": 55,
+              "max_expansions": 110,
+              "accuracies_pct": [
+                12.67,
+                16.5,
+                42.97,
+                43.77,
+                45.13,
+                44.93,
+                45.1
+              ]
+            },
+            {
+              "branch_factor": 55,
+              "max_expansions": 165,
+              "accuracies_pct": [
+                17.0,
+                19.4,
+                42.9,
+                43.47,
+                44.8,
+                44.67,
+                44.6
+              ]
+            },
+            {
+              "branch_factor": 55,
+              "max_expansions": 220,
+              "accuracies_pct": [
+                18.77,
+                21.57,
+                42.8,
+                43.3,
+                44.67,
+                44.53,
+                44.37
+              ]
+            }
+          ]
+        },
+        {
+          "literal_name": "data_sos_mcts",
+          "kind": "sos_comparison_grid",
+          "units": "accuracy_percent",
+          "points": [
+            {
+              "branch_factor": 1,
+              "max_expansions": 4,
+              "accuracies_pct": [
+                21.27,
+                22.51,
+                22.33
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 6,
+              "accuracies_pct": [
+                25.67,
+                26.53,
+                27.33
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 9,
+              "accuracies_pct": [
+                29.57,
+                30.45,
+                32.57
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 15,
+              "accuracies_pct": [
+                33.48,
+                34.45,
+                37.33
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 16,
+              "accuracies_pct": [
+                35.06,
+                36.17,
+                38.87
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "git_blob": "9666d034031624338b7b91953783afe33c92b957",
+      "historical_path": "results/create_plots.py",
+      "arrays": [
+        {
+          "literal_name": "data",
+          "kind": "mcts_checkpoint_grid",
+          "units": "accuracy_percent",
+          "points": [
+            {
+              "branch_factor": 1,
+              "max_expansions": 4,
+              "accuracies_pct": [
+                2.63,
+                6.37,
+                21.07,
+                21.07,
+                21.9,
+                22.53,
+                22.33
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 6,
+              "accuracies_pct": [
+                4.43,
+                9.83,
+                25.37,
+                25.93,
+                27.1,
+                27.07,
+                27.33
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 8,
+              "accuracies_pct": [
+                6.47,
+                11.43,
+                27.6,
+                27.9,
+                28.87,
+                28.67,
+                28.87
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 10,
+              "accuracies_pct": [
+                7.2,
+                12.37,
+                27.87,
+                28.0,
+                29.03,
+                28.73,
+                29.07
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 9,
+              "accuracies_pct": [
+                6.82,
+                13.1,
+                28.97,
+                30.63,
+                31.33,
+                31.0,
+                32.57
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 12,
+              "accuracies_pct": [
+                9.75,
+                15.7,
+                30.3,
+                31.43,
+                32.1,
+                31.73,
+                33.13
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 15,
+              "accuracies_pct": [
+                11.25,
+                17.37,
+                30.53,
+                31.6,
+                32.27,
+                31.9,
+                33.13
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 10,
+              "accuracies_pct": [
+                7.23,
+                11.77,
+                32.23,
+                32.33,
+                34.0,
+                34.27,
+                34.97
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 15,
+              "accuracies_pct": [
+                11.0,
+                17.67,
+                34.7,
+                34.63,
+                36.33,
+                36.23,
+                37.33
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 20,
+              "accuracies_pct": [
+                13.97,
+                20.77,
+                35.57,
+                34.97,
+                36.53,
+                36.53,
+                37.7
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 16,
+              "accuracies_pct": [
+                10.43,
+                14.57,
+                36.1,
+                37.27,
+                38.17,
+                38.87,
+                38.87
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 24,
+              "accuracies_pct": [
+                14.53,
+                19.63,
+                37.93,
+                38.4,
+                39.5,
+                39.83,
+                39.83
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 32,
+              "accuracies_pct": [
+                16.8,
+                22.0,
+                38.13,
+                38.7,
+                39.4,
+                39.93,
+                39.9
+              ]
+            },
+            {
+              "branch_factor": 13,
+              "max_expansions": 26,
+              "accuracies_pct": [
+                9.23,
+                17.43,
+                39.43,
+                40.1,
+                41.93,
+                40.97,
+                41.9
+              ]
+            },
+            {
+              "branch_factor": 13,
+              "max_expansions": 39,
+              "accuracies_pct": [
+                15.37,
+                21.57,
+                39.83,
+                40.67,
+                42.17,
+                41.37,
+                42.43
+              ]
+            },
+            {
+              "branch_factor": 13,
+              "max_expansions": 52,
+              "accuracies_pct": [
+                18.23,
+                23.0,
+                40.07,
+                40.63,
+                42.13,
+                41.33,
+                42.37
+              ]
+            },
+            {
+              "branch_factor": 21,
+              "max_expansions": 42,
+              "accuracies_pct": [
+                10.77,
+                17.43,
+                40.67,
+                41.9,
+                42.93,
+                43.07,
+                43.1
+              ]
+            },
+            {
+              "branch_factor": 21,
+              "max_expansions": 63,
+              "accuracies_pct": [
+                15.83,
+                21.1,
+                41.4,
+                42.03,
+                42.9,
+                42.97,
+                43.23
+              ]
+            },
+            {
+              "branch_factor": 21,
+              "max_expansions": 84,
+              "accuracies_pct": [
+                18.63,
+                23.17,
+                41.33,
+                41.87,
+                42.9,
+                42.9,
+                43.1
+              ]
+            },
+            {
+              "branch_factor": 34,
+              "max_expansions": 68,
+              "accuracies_pct": [
+                11.67,
+                17.27,
+                42.73,
+                43.43,
+                44.6,
+                44.0,
+                44.86
+              ]
+            },
+            {
+              "branch_factor": 34,
+              "max_expansions": 102,
+              "accuracies_pct": [
+                16.57,
+                20.13,
+                42.63,
+                43.13,
+                44.27,
+                43.83,
+                44.42
+              ]
+            },
+            {
+              "branch_factor": 34,
+              "max_expansions": 136,
+              "accuracies_pct": [
+                18.8,
+                21.97,
+                42.4,
+                43.2,
+                44.1,
+                43.77,
+                44.38
+              ]
+            },
+            {
+              "branch_factor": 55,
+              "max_expansions": 110,
+              "accuracies_pct": [
+                12.67,
+                16.5,
+                42.97,
+                43.77,
+                45.13,
+                44.93,
+                45.1
+              ]
+            },
+            {
+              "branch_factor": 55,
+              "max_expansions": 165,
+              "accuracies_pct": [
+                17.0,
+                19.4,
+                42.9,
+                43.47,
+                44.8,
+                44.67,
+                44.6
+              ]
+            },
+            {
+              "branch_factor": 55,
+              "max_expansions": 220,
+              "accuracies_pct": [
+                18.77,
+                21.57,
+                42.8,
+                43.3,
+                44.67,
+                44.53,
+                44.37
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "git_blob": "d3dca3cf3966fe5cf76e34f89008abf134bfa3d4",
+      "historical_path": "results/create_plots.py",
+      "arrays": [
+        {
+          "literal_name": "data",
+          "kind": "mcts_checkpoint_grid",
+          "units": "accuracy_percent",
+          "points": [
+            {
+              "branch_factor": 1,
+              "max_expansions": 4,
+              "accuracies_pct": [
+                2.63,
+                6.37,
+                21.07,
+                21.07,
+                21.9,
+                22.53,
+                22.33
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 6,
+              "accuracies_pct": [
+                4.43,
+                9.83,
+                25.37,
+                25.93,
+                27.1,
+                27.07,
+                27.33
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 8,
+              "accuracies_pct": [
+                6.47,
+                11.43,
+                27.6,
+                27.9,
+                28.87,
+                28.67,
+                28.87
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 10,
+              "accuracies_pct": [
+                7.2,
+                12.37,
+                27.87,
+                28.0,
+                29.03,
+                28.73,
+                29.07
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 9,
+              "accuracies_pct": [
+                6.82,
+                13.1,
+                28.97,
+                30.63,
+                31.33,
+                31.0,
+                32.57
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 12,
+              "accuracies_pct": [
+                9.75,
+                15.7,
+                30.3,
+                31.43,
+                32.1,
+                31.73,
+                33.13
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 15,
+              "accuracies_pct": [
+                11.25,
+                17.37,
+                30.53,
+                31.6,
+                32.27,
+                31.9,
+                33.13
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 10,
+              "accuracies_pct": [
+                7.23,
+                11.77,
+                32.23,
+                32.33,
+                34.0,
+                34.27,
+                34.97
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 15,
+              "accuracies_pct": [
+                11.0,
+                17.67,
+                34.7,
+                34.63,
+                36.33,
+                36.23,
+                37.33
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 20,
+              "accuracies_pct": [
+                13.97,
+                20.77,
+                35.57,
+                34.97,
+                36.53,
+                36.53,
+                37.7
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 16,
+              "accuracies_pct": [
+                10.43,
+                14.57,
+                36.1,
+                37.27,
+                38.17,
+                38.87,
+                38.87
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 24,
+              "accuracies_pct": [
+                14.53,
+                19.63,
+                37.93,
+                38.4,
+                39.5,
+                39.83,
+                39.83
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 32,
+              "accuracies_pct": [
+                16.8,
+                22.0,
+                38.13,
+                38.7,
+                39.4,
+                39.93,
+                39.9
+              ]
+            },
+            {
+              "branch_factor": 13,
+              "max_expansions": 26,
+              "accuracies_pct": [
+                9.23,
+                17.43,
+                39.43,
+                40.1,
+                41.93,
+                40.97,
+                41.9
+              ]
+            },
+            {
+              "branch_factor": 13,
+              "max_expansions": 39,
+              "accuracies_pct": [
+                15.37,
+                21.57,
+                39.83,
+                40.67,
+                42.17,
+                41.37,
+                42.43
+              ]
+            },
+            {
+              "branch_factor": 13,
+              "max_expansions": 52,
+              "accuracies_pct": [
+                18.23,
+                23.0,
+                40.07,
+                40.63,
+                42.13,
+                41.33,
+                42.37
+              ]
+            },
+            {
+              "branch_factor": 21,
+              "max_expansions": 42,
+              "accuracies_pct": [
+                10.77,
+                17.43,
+                40.67,
+                41.9,
+                42.93,
+                43.07,
+                43.1
+              ]
+            },
+            {
+              "branch_factor": 21,
+              "max_expansions": 63,
+              "accuracies_pct": [
+                15.83,
+                21.1,
+                41.4,
+                42.03,
+                42.9,
+                42.97,
+                43.23
+              ]
+            },
+            {
+              "branch_factor": 21,
+              "max_expansions": 84,
+              "accuracies_pct": [
+                18.63,
+                23.17,
+                41.33,
+                41.87,
+                42.9,
+                42.9,
+                43.1
+              ]
+            },
+            {
+              "branch_factor": 34,
+              "max_expansions": 68,
+              "accuracies_pct": [
+                11.67,
+                17.27,
+                42.73,
+                43.43,
+                44.6,
+                44.0,
+                44.86
+              ]
+            },
+            {
+              "branch_factor": 34,
+              "max_expansions": 102,
+              "accuracies_pct": [
+                16.57,
+                20.13,
+                42.63,
+                43.13,
+                44.27,
+                43.83,
+                44.42
+              ]
+            },
+            {
+              "branch_factor": 34,
+              "max_expansions": 136,
+              "accuracies_pct": [
+                18.8,
+                21.97,
+                42.4,
+                43.2,
+                44.1,
+                43.77,
+                44.38
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "git_blob": "4457f4e1ae3cde79003e8d4752e016afff56d374",
+      "historical_path": "results/create_plots.py",
+      "arrays": [
+        {
+          "literal_name": "data",
+          "kind": "mcts_checkpoint_grid",
+          "units": "accuracy_percent",
+          "points": [
+            {
+              "branch_factor": 1,
+              "max_expansions": 4,
+              "accuracies_pct": [
+                2.63,
+                6.37,
+                21.07,
+                21.07,
+                21.9,
+                22.53,
+                22.33
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 6,
+              "accuracies_pct": [
+                4.43,
+                9.83,
+                25.37,
+                25.93,
+                27.1,
+                27.07,
+                27.33
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 8,
+              "accuracies_pct": [
+                6.47,
+                11.43,
+                27.6,
+                27.9,
+                28.87,
+                28.67,
+                28.87
+              ]
+            },
+            {
+              "branch_factor": 2,
+              "max_expansions": 10,
+              "accuracies_pct": [
+                7.2,
+                12.37,
+                27.87,
+                28.0,
+                29.03,
+                28.73,
+                29.07
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 9,
+              "accuracies_pct": [
+                6.82,
+                13.1,
+                28.97,
+                30.63,
+                31.33,
+                31.0,
+                32.57
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 12,
+              "accuracies_pct": [
+                9.75,
+                15.7,
+                30.3,
+                31.43,
+                32.1,
+                31.73,
+                33.13
+              ]
+            },
+            {
+              "branch_factor": 3,
+              "max_expansions": 15,
+              "accuracies_pct": [
+                11.25,
+                17.37,
+                30.53,
+                31.6,
+                32.27,
+                31.9,
+                33.13
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 10,
+              "accuracies_pct": [
+                7.23,
+                11.77,
+                32.23,
+                32.33,
+                34.0,
+                34.27,
+                34.97
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 15,
+              "accuracies_pct": [
+                11.0,
+                17.67,
+                34.7,
+                34.63,
+                36.33,
+                36.23,
+                37.33
+              ]
+            },
+            {
+              "branch_factor": 5,
+              "max_expansions": 20,
+              "accuracies_pct": [
+                13.97,
+                20.77,
+                35.57,
+                34.97,
+                36.53,
+                36.53,
+                37.7
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 16,
+              "accuracies_pct": [
+                10.43,
+                14.57,
+                36.1,
+                37.27,
+                38.17,
+                38.87,
+                38.87
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 24,
+              "accuracies_pct": [
+                14.53,
+                19.63,
+                37.93,
+                38.4,
+                39.5,
+                39.83,
+                39.83
+              ]
+            },
+            {
+              "branch_factor": 8,
+              "max_expansions": 32,
+              "accuracies_pct": [
+                16.8,
+                22.0,
+                38.13,
+                38.7,
+                39.4,
+                39.93,
+                39.9
+              ]
+            },
+            {
+              "branch_factor": 13,
+              "max_expansions": 26,
+              "accuracies_pct": [
+                9.23,
+                17.43,
+                39.43,
+                40.1,
+                41.93,
+                40.97,
+                41.9
+              ]
+            },
+            {
+              "branch_factor": 13,
+              "max_expansions": 39,
+              "accuracies_pct": [
+                15.37,
+                21.57,
+                39.83,
+                40.67,
+                42.17,
+                41.37,
+                42.43
+              ]
+            },
+            {
+              "branch_factor": 13,
+              "max_expansions": 52,
+              "accuracies_pct": [
+                18.23,
+                23.0,
+                40.07,
+                40.63,
+                42.13,
+                41.33,
+                42.37
+              ]
+            },
+            {
+              "branch_factor": 21,
+              "max_expansions": 42,
+              "accuracies_pct": [
+                10.77,
+                17.43,
+                40.67,
+                41.9,
+                42.93,
+                43.07,
+                43.1
+              ]
+            },
+            {
+              "branch_factor": 21,
+              "max_expansions": 63,
+              "accuracies_pct": [
+                15.83,
+                21.1,
+                41.4,
+                42.03,
+                42.9,
+                42.97,
+                43.23
+              ]
+            },
+            {
+              "branch_factor": 21,
+              "max_expansions": 84,
+              "accuracies_pct": [
+                18.63,
+                23.17,
+                41.33,
+                41.87,
+                42.9,
+                42.9,
+                43.1
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "git_blob": "a787d9131090e67d95589140b9e4242555b3b0ef",
+      "historical_path": "evaluate/results/plots/generate_plots.py",
+      "arrays": [
+        {
+          "literal_name": "list1",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              1,
+              4,
+              0.127
+            ],
+            [
+              2,
+              8,
+              0.201
+            ],
+            [
+              2,
+              16,
+              0.205
+            ],
+            [
+              3,
+              11,
+              0.236
+            ],
+            [
+              3,
+              21,
+              0.248
+            ],
+            [
+              4,
+              16,
+              0.291
+            ],
+            [
+              5,
+              13,
+              0.291
+            ],
+            [
+              6,
+              11,
+              0.287
+            ],
+            [
+              7,
+              9,
+              0.203
+            ],
+            [
+              4,
+              32,
+              0.289
+            ],
+            [
+              5,
+              26,
+              0.305
+            ],
+            [
+              6,
+              21,
+              0.331
+            ],
+            [
+              7,
+              18,
+              0.334
+            ],
+            [
+              8,
+              16,
+              0.336
+            ],
+            [
+              9,
+              14,
+              0.309
+            ],
+            [
+              5,
+              51,
+              0.318
+            ],
+            [
+              6,
+              43,
+              0.342
+            ],
+            [
+              7,
+              37,
+              0.339
+            ],
+            [
+              8,
+              32,
+              0.364
+            ],
+            [
+              9,
+              28,
+              0.36
+            ],
+            [
+              10,
+              26,
+              0.372
+            ],
+            [
+              6,
+              85,
+              0.318
+            ],
+            [
+              8,
+              64,
+              0.359
+            ],
+            [
+              10,
+              51,
+              0.385
+            ],
+            [
+              12,
+              43,
+              0.386
+            ],
+            [
+              14,
+              37,
+              0.402
+            ],
+            [
+              16,
+              32,
+              0.411
+            ],
+            [
+              10,
+              102,
+              0.378
+            ],
+            [
+              13,
+              79,
+              0.401
+            ],
+            [
+              16,
+              64,
+              0.421
+            ],
+            [
+              19,
+              54,
+              0.435
+            ],
+            [
+              22,
+              47,
+              0.428
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list1",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              4,
+              0.127
+            ],
+            [
+              16,
+              0.201
+            ],
+            [
+              32,
+              0.236
+            ],
+            [
+              64,
+              0.291
+            ],
+            [
+              128,
+              0.336
+            ],
+            [
+              256,
+              0.372
+            ],
+            [
+              512,
+              0.411
+            ],
+            [
+              1024,
+              0.435
+            ]
+          ]
+        },
+        {
+          "literal_name": "list2",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              1,
+              4,
+              0.241
+            ],
+            [
+              2,
+              8,
+              0.298
+            ],
+            [
+              2,
+              16,
+              0.309
+            ],
+            [
+              3,
+              11,
+              0.347
+            ],
+            [
+              3,
+              21,
+              0.349
+            ],
+            [
+              4,
+              16,
+              0.387
+            ],
+            [
+              5,
+              13,
+              0.394
+            ],
+            [
+              6,
+              11,
+              0.408
+            ],
+            [
+              7,
+              9,
+              0.401
+            ],
+            [
+              4,
+              32,
+              0.382
+            ],
+            [
+              5,
+              26,
+              0.396
+            ],
+            [
+              6,
+              21,
+              0.419
+            ],
+            [
+              7,
+              18,
+              0.422
+            ],
+            [
+              8,
+              16,
+              0.445
+            ],
+            [
+              9,
+              14,
+              0.45
+            ],
+            [
+              5,
+              51,
+              0.401
+            ],
+            [
+              6,
+              43,
+              0.417
+            ],
+            [
+              7,
+              37,
+              0.439
+            ],
+            [
+              8,
+              32,
+              0.44
+            ],
+            [
+              9,
+              28,
+              0.456
+            ],
+            [
+              10,
+              26,
+              0.464
+            ],
+            [
+              6,
+              85,
+              0.423
+            ],
+            [
+              8,
+              64,
+              0.433
+            ],
+            [
+              10,
+              51,
+              0.477
+            ],
+            [
+              12,
+              43,
+              0.489
+            ],
+            [
+              14,
+              37,
+              0.501
+            ],
+            [
+              16,
+              32,
+              0.489
+            ],
+            [
+              10,
+              102,
+              0.473
+            ],
+            [
+              13,
+              79,
+              0.49
+            ],
+            [
+              16,
+              64,
+              0.514
+            ],
+            [
+              19,
+              54,
+              0.513
+            ],
+            [
+              22,
+              47,
+              0.526
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list2",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              4,
+              0.241
+            ],
+            [
+              16,
+              0.298
+            ],
+            [
+              32,
+              0.347
+            ],
+            [
+              64,
+              0.408
+            ],
+            [
+              128,
+              0.45
+            ],
+            [
+              256,
+              0.464
+            ],
+            [
+              512,
+              0.501
+            ],
+            [
+              1024,
+              0.526
+            ]
+          ]
+        },
+        {
+          "literal_name": "list3",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              1,
+              4,
+              0.272
+            ],
+            [
+              2,
+              8,
+              0.316
+            ],
+            [
+              2,
+              16,
+              0.326
+            ],
+            [
+              3,
+              11,
+              0.35
+            ],
+            [
+              3,
+              21,
+              0.362
+            ],
+            [
+              4,
+              16,
+              0.382
+            ],
+            [
+              5,
+              13,
+              0.394
+            ],
+            [
+              6,
+              11,
+              0.396
+            ],
+            [
+              7,
+              9,
+              0.393
+            ],
+            [
+              4,
+              32,
+              0.379
+            ],
+            [
+              5,
+              26,
+              0.394
+            ],
+            [
+              6,
+              21,
+              0.404
+            ],
+            [
+              7,
+              18,
+              0.42
+            ],
+            [
+              8,
+              16,
+              0.424
+            ],
+            [
+              9,
+              14,
+              0.432
+            ],
+            [
+              5,
+              51,
+              0.402
+            ],
+            [
+              6,
+              43,
+              0.41
+            ],
+            [
+              7,
+              37,
+              0.416
+            ],
+            [
+              8,
+              32,
+              0.408
+            ],
+            [
+              9,
+              28,
+              0.414
+            ],
+            [
+              10,
+              26,
+              0.426
+            ],
+            [
+              11,
+              23,
+              0.441
+            ],
+            [
+              12,
+              21,
+              0.444
+            ],
+            [
+              13,
+              19,
+              0.443
+            ],
+            [
+              6,
+              85,
+              0.408
+            ],
+            [
+              8,
+              64,
+              0.428
+            ],
+            [
+              10,
+              51,
+              0.445
+            ],
+            [
+              12,
+              43,
+              0.456
+            ],
+            [
+              14,
+              37,
+              0.463
+            ],
+            [
+              16,
+              32,
+              0.465
+            ],
+            [
+              18,
+              28,
+              0.474
+            ],
+            [
+              20,
+              26,
+              0.477
+            ],
+            [
+              10,
+              102,
+              0.446
+            ],
+            [
+              13,
+              79,
+              0.459
+            ],
+            [
+              16,
+              64,
+              0.458
+            ],
+            [
+              19,
+              54,
+              0.477
+            ],
+            [
+              22,
+              47,
+              0.483
+            ],
+            [
+              25,
+              41,
+              0.499
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list3",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              4,
+              0.272
+            ],
+            [
+              16,
+              0.316
+            ],
+            [
+              32,
+              0.35
+            ],
+            [
+              64,
+              0.396
+            ],
+            [
+              128,
+              0.432
+            ],
+            [
+              256,
+              0.444
+            ],
+            [
+              512,
+              0.477
+            ],
+            [
+              1024,
+              0.499
+            ]
+          ]
+        },
+        {
+          "literal_name": "list4",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              1,
+              4,
+              0.277
+            ],
+            [
+              2,
+              8,
+              0.321
+            ],
+            [
+              2,
+              16,
+              0.313
+            ],
+            [
+              3,
+              11,
+              0.356
+            ],
+            [
+              3,
+              21,
+              0.348
+            ],
+            [
+              4,
+              16,
+              0.389
+            ],
+            [
+              5,
+              13,
+              0.394
+            ],
+            [
+              6,
+              11,
+              0.419
+            ],
+            [
+              7,
+              9,
+              0.411
+            ],
+            [
+              4,
+              32,
+              0.37
+            ],
+            [
+              5,
+              26,
+              0.399
+            ],
+            [
+              6,
+              21,
+              0.416
+            ],
+            [
+              7,
+              18,
+              0.424
+            ],
+            [
+              8,
+              16,
+              0.419
+            ],
+            [
+              9,
+              14,
+              0.429
+            ],
+            [
+              5,
+              51,
+              0.386
+            ],
+            [
+              6,
+              43,
+              0.395
+            ],
+            [
+              7,
+              37,
+              0.428
+            ],
+            [
+              8,
+              32,
+              0.42
+            ],
+            [
+              9,
+              28,
+              0.447
+            ],
+            [
+              10,
+              26,
+              0.445
+            ],
+            [
+              11,
+              23,
+              0.441
+            ],
+            [
+              12,
+              21,
+              0.432
+            ],
+            [
+              13,
+              19,
+              0.457
+            ],
+            [
+              6,
+              85,
+              0.407
+            ],
+            [
+              8,
+              64,
+              0.431
+            ],
+            [
+              10,
+              51,
+              0.439
+            ],
+            [
+              12,
+              43,
+              0.46
+            ],
+            [
+              14,
+              37,
+              0.474
+            ],
+            [
+              16,
+              32,
+              0.476
+            ],
+            [
+              18,
+              28,
+              0.468
+            ],
+            [
+              20,
+              26,
+              0.491
+            ],
+            [
+              10,
+              102,
+              0.442
+            ],
+            [
+              13,
+              79,
+              0.461
+            ],
+            [
+              16,
+              64,
+              0.456
+            ],
+            [
+              19,
+              54,
+              0.452
+            ],
+            [
+              22,
+              47,
+              0.492
+            ],
+            [
+              25,
+              41,
+              0.486
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list4",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              4,
+              0.277
+            ],
+            [
+              16,
+              0.321
+            ],
+            [
+              32,
+              0.356
+            ],
+            [
+              64,
+              0.419
+            ],
+            [
+              128,
+              0.429
+            ],
+            [
+              256,
+              0.457
+            ],
+            [
+              512,
+              0.491
+            ],
+            [
+              1024,
+              0.492
+            ]
+          ]
+        },
+        {
+          "literal_name": "list5_",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              1,
+              4,
+              0.275
+            ],
+            [
+              2,
+              8,
+              0.358
+            ],
+            [
+              2,
+              16,
+              0.364
+            ],
+            [
+              3,
+              11,
+              0.383
+            ],
+            [
+              4,
+              16,
+              0.414
+            ],
+            [
+              5,
+              13,
+              0.419
+            ],
+            [
+              6,
+              11,
+              0.442
+            ],
+            [
+              7,
+              9,
+              0.436
+            ],
+            [
+              7,
+              18,
+              0.454
+            ],
+            [
+              8,
+              16,
+              0.469
+            ],
+            [
+              9,
+              14,
+              0.468
+            ],
+            [
+              10,
+              13,
+              0.479
+            ],
+            [
+              11,
+              23,
+              0.482
+            ],
+            [
+              12,
+              21,
+              0.482
+            ],
+            [
+              13,
+              20,
+              0.495
+            ],
+            [
+              14,
+              18,
+              0.508
+            ],
+            [
+              14,
+              37,
+              0.507
+            ],
+            [
+              16,
+              32,
+              0.512
+            ],
+            [
+              18,
+              28,
+              0.521
+            ],
+            [
+              20,
+              26,
+              0.52
+            ],
+            [
+              19,
+              54,
+              0.516
+            ],
+            [
+              22,
+              47,
+              0.534
+            ],
+            [
+              25,
+              41,
+              0.526
+            ],
+            [
+              28,
+              37,
+              0.52
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list5",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              4,
+              0.275
+            ],
+            [
+              16,
+              0.358
+            ],
+            [
+              32,
+              0.383
+            ],
+            [
+              64,
+              0.442
+            ],
+            [
+              128,
+              0.479
+            ],
+            [
+              256,
+              0.508
+            ],
+            [
+              512,
+              0.521
+            ],
+            [
+              1024,
+              0.534
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "git_blob": "f98825aaab54a3930c4e6ffd6a512ab0e5ad27a0",
+      "historical_path": "evaluate/results/plots/generate_plots.py",
+      "arrays": [
+        {
+          "literal_name": "list1",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              1,
+              4,
+              0.127
+            ],
+            [
+              2,
+              8,
+              0.201
+            ],
+            [
+              2,
+              16,
+              0.205
+            ],
+            [
+              3,
+              11,
+              0.236
+            ],
+            [
+              3,
+              21,
+              0.248
+            ],
+            [
+              4,
+              16,
+              0.291
+            ],
+            [
+              5,
+              13,
+              0.291
+            ],
+            [
+              6,
+              11,
+              0.287
+            ],
+            [
+              7,
+              9,
+              0.203
+            ],
+            [
+              4,
+              32,
+              0.289
+            ],
+            [
+              5,
+              26,
+              0.305
+            ],
+            [
+              6,
+              21,
+              0.331
+            ],
+            [
+              7,
+              18,
+              0.334
+            ],
+            [
+              8,
+              16,
+              0.336
+            ],
+            [
+              9,
+              14,
+              0.309
+            ],
+            [
+              5,
+              51,
+              0.318
+            ],
+            [
+              6,
+              43,
+              0.342
+            ],
+            [
+              7,
+              37,
+              0.339
+            ],
+            [
+              8,
+              32,
+              0.364
+            ],
+            [
+              9,
+              28,
+              0.36
+            ],
+            [
+              10,
+              26,
+              0.372
+            ],
+            [
+              6,
+              85,
+              0.318
+            ],
+            [
+              8,
+              64,
+              0.359
+            ],
+            [
+              10,
+              51,
+              0.385
+            ],
+            [
+              12,
+              43,
+              0.386
+            ],
+            [
+              14,
+              37,
+              0.402
+            ],
+            [
+              16,
+              32,
+              0.411
+            ],
+            [
+              10,
+              102,
+              0.378
+            ],
+            [
+              13,
+              79,
+              0.401
+            ],
+            [
+              16,
+              64,
+              0.411
+            ],
+            [
+              19,
+              54,
+              0.437
+            ],
+            [
+              22,
+              47,
+              0.432
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list1",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              4,
+              0.127
+            ],
+            [
+              16,
+              0.201
+            ],
+            [
+              32,
+              0.236
+            ],
+            [
+              64,
+              0.291
+            ],
+            [
+              128,
+              0.336
+            ],
+            [
+              256,
+              0.372
+            ],
+            [
+              512,
+              0.411
+            ],
+            [
+              1024,
+              0.437
+            ]
+          ]
+        },
+        {
+          "literal_name": "list2",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              1,
+              4,
+              0.241
+            ],
+            [
+              2,
+              8,
+              0.298
+            ],
+            [
+              2,
+              16,
+              0.309
+            ],
+            [
+              3,
+              11,
+              0.347
+            ],
+            [
+              3,
+              21,
+              0.349
+            ],
+            [
+              4,
+              16,
+              0.387
+            ],
+            [
+              5,
+              13,
+              0.394
+            ],
+            [
+              6,
+              11,
+              0.408
+            ],
+            [
+              7,
+              9,
+              0.401
+            ],
+            [
+              4,
+              32,
+              0.382
+            ],
+            [
+              5,
+              26,
+              0.396
+            ],
+            [
+              6,
+              21,
+              0.419
+            ],
+            [
+              7,
+              18,
+              0.422
+            ],
+            [
+              8,
+              16,
+              0.445
+            ],
+            [
+              9,
+              14,
+              0.45
+            ],
+            [
+              5,
+              51,
+              0.401
+            ],
+            [
+              6,
+              43,
+              0.417
+            ],
+            [
+              7,
+              37,
+              0.439
+            ],
+            [
+              8,
+              32,
+              0.44
+            ],
+            [
+              9,
+              28,
+              0.456
+            ],
+            [
+              10,
+              26,
+              0.464
+            ],
+            [
+              6,
+              85,
+              0.423
+            ],
+            [
+              8,
+              64,
+              0.433
+            ],
+            [
+              10,
+              51,
+              0.477
+            ],
+            [
+              12,
+              43,
+              0.489
+            ],
+            [
+              14,
+              37,
+              0.501
+            ],
+            [
+              16,
+              32,
+              0.489
+            ],
+            [
+              10,
+              102,
+              0.473
+            ],
+            [
+              13,
+              79,
+              0.49
+            ],
+            [
+              16,
+              64,
+              0.514
+            ],
+            [
+              19,
+              54,
+              0.513
+            ],
+            [
+              22,
+              47,
+              0.526
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list2",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              4,
+              0.241
+            ],
+            [
+              16,
+              0.298
+            ],
+            [
+              32,
+              0.347
+            ],
+            [
+              64,
+              0.408
+            ],
+            [
+              128,
+              0.45
+            ],
+            [
+              256,
+              0.464
+            ],
+            [
+              512,
+              0.501
+            ],
+            [
+              1024,
+              0.526
+            ]
+          ]
+        },
+        {
+          "literal_name": "list3",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              1,
+              4,
+              0.272
+            ],
+            [
+              2,
+              8,
+              0.316
+            ],
+            [
+              2,
+              16,
+              0.326
+            ],
+            [
+              3,
+              11,
+              0.35
+            ],
+            [
+              3,
+              21,
+              0.362
+            ],
+            [
+              4,
+              16,
+              0.382
+            ],
+            [
+              5,
+              13,
+              0.394
+            ],
+            [
+              6,
+              11,
+              0.396
+            ],
+            [
+              7,
+              9,
+              0.393
+            ],
+            [
+              4,
+              32,
+              0.379
+            ],
+            [
+              5,
+              26,
+              0.394
+            ],
+            [
+              6,
+              21,
+              0.404
+            ],
+            [
+              7,
+              18,
+              0.42
+            ],
+            [
+              8,
+              16,
+              0.424
+            ],
+            [
+              9,
+              14,
+              0.432
+            ],
+            [
+              5,
+              51,
+              0.402
+            ],
+            [
+              6,
+              43,
+              0.41
+            ],
+            [
+              7,
+              37,
+              0.416
+            ],
+            [
+              8,
+              32,
+              0.408
+            ],
+            [
+              9,
+              28,
+              0.414
+            ],
+            [
+              10,
+              26,
+              0.426
+            ],
+            [
+              11,
+              23,
+              0.441
+            ],
+            [
+              12,
+              21,
+              0.444
+            ],
+            [
+              13,
+              19,
+              0.443
+            ],
+            [
+              6,
+              85,
+              0.408
+            ],
+            [
+              8,
+              64,
+              0.428
+            ],
+            [
+              10,
+              51,
+              0.445
+            ],
+            [
+              12,
+              43,
+              0.456
+            ],
+            [
+              14,
+              37,
+              0.463
+            ],
+            [
+              16,
+              32,
+              0.465
+            ],
+            [
+              18,
+              28,
+              0.474
+            ],
+            [
+              20,
+              26,
+              0.477
+            ],
+            [
+              10,
+              102,
+              0.446
+            ],
+            [
+              13,
+              79,
+              0.459
+            ],
+            [
+              16,
+              64,
+              0.458
+            ],
+            [
+              19,
+              54,
+              0.477
+            ],
+            [
+              22,
+              47,
+              0.483
+            ],
+            [
+              25,
+              41,
+              0.499
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list3",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              4,
+              0.272
+            ],
+            [
+              16,
+              0.316
+            ],
+            [
+              32,
+              0.35
+            ],
+            [
+              64,
+              0.396
+            ],
+            [
+              128,
+              0.432
+            ],
+            [
+              256,
+              0.444
+            ],
+            [
+              512,
+              0.477
+            ],
+            [
+              1024,
+              0.499
+            ]
+          ]
+        },
+        {
+          "literal_name": "list4",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              1,
+              4,
+              0.277
+            ],
+            [
+              2,
+              8,
+              0.321
+            ],
+            [
+              2,
+              16,
+              0.313
+            ],
+            [
+              3,
+              11,
+              0.356
+            ],
+            [
+              3,
+              21,
+              0.348
+            ],
+            [
+              4,
+              16,
+              0.389
+            ],
+            [
+              5,
+              13,
+              0.394
+            ],
+            [
+              6,
+              11,
+              0.419
+            ],
+            [
+              7,
+              9,
+              0.411
+            ],
+            [
+              4,
+              32,
+              0.37
+            ],
+            [
+              5,
+              26,
+              0.399
+            ],
+            [
+              6,
+              21,
+              0.416
+            ],
+            [
+              7,
+              18,
+              0.424
+            ],
+            [
+              8,
+              16,
+              0.419
+            ],
+            [
+              9,
+              14,
+              0.429
+            ],
+            [
+              5,
+              51,
+              0.386
+            ],
+            [
+              6,
+              43,
+              0.395
+            ],
+            [
+              7,
+              37,
+              0.428
+            ],
+            [
+              8,
+              32,
+              0.42
+            ],
+            [
+              9,
+              28,
+              0.447
+            ],
+            [
+              10,
+              26,
+              0.445
+            ],
+            [
+              11,
+              23,
+              0.441
+            ],
+            [
+              12,
+              21,
+              0.432
+            ],
+            [
+              13,
+              19,
+              0.457
+            ],
+            [
+              6,
+              85,
+              0.407
+            ],
+            [
+              8,
+              64,
+              0.431
+            ],
+            [
+              10,
+              51,
+              0.439
+            ],
+            [
+              12,
+              43,
+              0.46
+            ],
+            [
+              14,
+              37,
+              0.474
+            ],
+            [
+              16,
+              32,
+              0.476
+            ],
+            [
+              18,
+              28,
+              0.468
+            ],
+            [
+              20,
+              26,
+              0.491
+            ],
+            [
+              10,
+              102,
+              0.442
+            ],
+            [
+              13,
+              79,
+              0.461
+            ],
+            [
+              16,
+              64,
+              0.456
+            ],
+            [
+              19,
+              54,
+              0.452
+            ],
+            [
+              22,
+              47,
+              0.492
+            ],
+            [
+              25,
+              41,
+              0.486
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list4",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              4,
+              0.277
+            ],
+            [
+              16,
+              0.321
+            ],
+            [
+              32,
+              0.356
+            ],
+            [
+              64,
+              0.419
+            ],
+            [
+              128,
+              0.429
+            ],
+            [
+              256,
+              0.457
+            ],
+            [
+              512,
+              0.491
+            ],
+            [
+              1024,
+              0.492
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "git_blob": "5dabdde83eed3fe76e025c38381b3f2d7498b774",
+      "historical_path": "evaluate/results/plots/generate_plots.py",
+      "arrays": [
+        {
+          "literal_name": "list1",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              2,
+              16,
+              0.205
+            ],
+            [
+              3,
+              11,
+              0.236
+            ],
+            [
+              3,
+              21,
+              0.248
+            ],
+            [
+              4,
+              16,
+              0.291
+            ],
+            [
+              5,
+              13,
+              0.291
+            ],
+            [
+              6,
+              11,
+              0.287
+            ],
+            [
+              7,
+              9,
+              0.203
+            ],
+            [
+              4,
+              32,
+              0.289
+            ],
+            [
+              5,
+              26,
+              0.305
+            ],
+            [
+              6,
+              21,
+              0.331
+            ],
+            [
+              7,
+              18,
+              0.334
+            ],
+            [
+              8,
+              16,
+              0.336
+            ],
+            [
+              9,
+              14,
+              0.309
+            ],
+            [
+              5,
+              51,
+              0.318
+            ],
+            [
+              6,
+              43,
+              0.342
+            ],
+            [
+              7,
+              37,
+              0.339
+            ],
+            [
+              8,
+              32,
+              0.364
+            ],
+            [
+              9,
+              28,
+              0.36
+            ],
+            [
+              10,
+              26,
+              0.372
+            ],
+            [
+              6,
+              85,
+              0.318
+            ],
+            [
+              8,
+              64,
+              0.359
+            ],
+            [
+              10,
+              51,
+              0.385
+            ],
+            [
+              12,
+              43,
+              0.386
+            ],
+            [
+              14,
+              37,
+              0.402
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list1",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              32,
+              0.236
+            ],
+            [
+              64,
+              0.291
+            ],
+            [
+              128,
+              0.336
+            ],
+            [
+              256,
+              0.372
+            ],
+            [
+              512,
+              0.402
+            ]
+          ]
+        },
+        {
+          "literal_name": "list2",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              2,
+              16,
+              0.309
+            ],
+            [
+              3,
+              11,
+              0.347
+            ],
+            [
+              3,
+              21,
+              0.349
+            ],
+            [
+              4,
+              16,
+              0.387
+            ],
+            [
+              5,
+              13,
+              0.394
+            ],
+            [
+              6,
+              11,
+              0.408
+            ],
+            [
+              7,
+              9,
+              0.401
+            ],
+            [
+              4,
+              32,
+              0.382
+            ],
+            [
+              5,
+              26,
+              0.396
+            ],
+            [
+              6,
+              21,
+              0.419
+            ],
+            [
+              7,
+              18,
+              0.422
+            ],
+            [
+              8,
+              16,
+              0.445
+            ],
+            [
+              9,
+              14,
+              0.45
+            ],
+            [
+              5,
+              51,
+              0.401
+            ],
+            [
+              6,
+              43,
+              0.417
+            ],
+            [
+              7,
+              37,
+              0.439
+            ],
+            [
+              8,
+              32,
+              0.44
+            ],
+            [
+              9,
+              28,
+              0.456
+            ],
+            [
+              10,
+              26,
+              0.464
+            ],
+            [
+              6,
+              85,
+              0.423
+            ],
+            [
+              8,
+              64,
+              0.433
+            ],
+            [
+              10,
+              51,
+              0.477
+            ],
+            [
+              12,
+              43,
+              0.489
+            ],
+            [
+              14,
+              37,
+              0.501
+            ],
+            [
+              16,
+              32,
+              0.489
+            ],
+            [
+              10,
+              102,
+              0.473
+            ],
+            [
+              13,
+              79,
+              0.49
+            ],
+            [
+              16,
+              64,
+              0.514
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list2",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              32,
+              0.347
+            ],
+            [
+              64,
+              0.408
+            ],
+            [
+              128,
+              0.45
+            ],
+            [
+              256,
+              0.464
+            ],
+            [
+              512,
+              0.501
+            ],
+            [
+              1024,
+              0.514
+            ]
+          ]
+        },
+        {
+          "literal_name": "list3",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              2,
+              16,
+              0.326
+            ],
+            [
+              3,
+              11,
+              0.35
+            ],
+            [
+              3,
+              21,
+              0.362
+            ],
+            [
+              4,
+              16,
+              0.382
+            ],
+            [
+              5,
+              13,
+              0.394
+            ],
+            [
+              6,
+              11,
+              0.396
+            ],
+            [
+              7,
+              9,
+              0.393
+            ],
+            [
+              4,
+              32,
+              0.379
+            ],
+            [
+              5,
+              26,
+              0.394
+            ],
+            [
+              6,
+              21,
+              0.404
+            ],
+            [
+              7,
+              18,
+              0.42
+            ],
+            [
+              8,
+              16,
+              0.424
+            ],
+            [
+              9,
+              14,
+              0.432
+            ],
+            [
+              5,
+              51,
+              0.402
+            ],
+            [
+              6,
+              43,
+              0.41
+            ],
+            [
+              7,
+              37,
+              0.416
+            ],
+            [
+              8,
+              32,
+              0.408
+            ],
+            [
+              9,
+              28,
+              0.414
+            ],
+            [
+              10,
+              26,
+              0.426
+            ],
+            [
+              11,
+              23,
+              0.441
+            ],
+            [
+              12,
+              21,
+              0.444
+            ],
+            [
+              6,
+              85,
+              0.408
+            ],
+            [
+              8,
+              64,
+              0.428
+            ],
+            [
+              10,
+              51,
+              0.445
+            ],
+            [
+              12,
+              43,
+              0.456
+            ],
+            [
+              14,
+              37,
+              0.463
+            ],
+            [
+              16,
+              32,
+              0.465
+            ],
+            [
+              10,
+              102,
+              0.446
+            ],
+            [
+              13,
+              79,
+              0.459
+            ],
+            [
+              16,
+              64,
+              0.458
+            ],
+            [
+              19,
+              54,
+              0.477
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list3",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              32,
+              0.35
+            ],
+            [
+              64,
+              0.396
+            ],
+            [
+              128,
+              0.432
+            ],
+            [
+              256,
+              0.444
+            ],
+            [
+              512,
+              0.465
+            ],
+            [
+              1024,
+              0.477
+            ]
+          ]
+        },
+        {
+          "literal_name": "list4",
+          "kind": "branch_expansion_observations",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              2,
+              16,
+              0.313
+            ],
+            [
+              3,
+              11,
+              0.356
+            ],
+            [
+              3,
+              21,
+              0.348
+            ],
+            [
+              4,
+              16,
+              0.389
+            ],
+            [
+              5,
+              13,
+              0.394
+            ],
+            [
+              6,
+              11,
+              0.419
+            ],
+            [
+              7,
+              9,
+              0.411
+            ],
+            [
+              4,
+              32,
+              0.37
+            ],
+            [
+              5,
+              26,
+              0.399
+            ],
+            [
+              6,
+              21,
+              0.416
+            ],
+            [
+              7,
+              18,
+              0.424
+            ],
+            [
+              8,
+              16,
+              0.419
+            ],
+            [
+              9,
+              14,
+              0.429
+            ],
+            [
+              5,
+              51,
+              0.386
+            ],
+            [
+              6,
+              43,
+              0.395
+            ],
+            [
+              7,
+              37,
+              0.428
+            ],
+            [
+              8,
+              32,
+              0.42
+            ],
+            [
+              9,
+              28,
+              0.447
+            ],
+            [
+              10,
+              26,
+              0.445
+            ],
+            [
+              11,
+              23,
+              0.441
+            ],
+            [
+              12,
+              21,
+              0.432
+            ],
+            [
+              6,
+              85,
+              0.407
+            ],
+            [
+              8,
+              64,
+              0.431
+            ],
+            [
+              10,
+              51,
+              0.439
+            ],
+            [
+              12,
+              43,
+              0.46
+            ],
+            [
+              14,
+              37,
+              0.474
+            ],
+            [
+              16,
+              32,
+              0.476
+            ],
+            [
+              10,
+              102,
+              0.442
+            ],
+            [
+              13,
+              79,
+              0.461
+            ],
+            [
+              16,
+              64,
+              0.456
+            ],
+            [
+              19,
+              54,
+              0.452
+            ]
+          ]
+        },
+        {
+          "literal_name": "compressed_list4",
+          "kind": "compressed_budget_summary",
+          "units": "accuracy_fraction",
+          "points": [
+            [
+              32,
+              0.356
+            ],
+            [
+              64,
+              0.419
+            ],
+            [
+              128,
+              0.429
+            ],
+            [
+              256,
+              0.447
+            ],
+            [
+              512,
+              0.476
+            ],
+            [
+              1024,
+              0.461
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,382 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "git_blob": "95cb79d15840ded34ad2b45a5391f5b031a805cf",
+      "historical_path": "logs/evaluation/iteration_3.yaml",
+      "file": "originals/95cb79d15840ded34ad2b45a5391f5b031a805cf--logs__evaluation__iteration_3.yaml",
+      "sha256": "106cd6606ecc3bd4e1d9a8af6e78d95b142ea2050a8b57d9cd0f437228c7139c",
+      "bytes": 489,
+      "earliest_changing_commit": "39eb15e08599bb5ec09487b3220794f4c8e4a78b",
+      "committed_at": "2025-05-12T21:32:05Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 1,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "23e44648a28e41b628457f77a7aad2d480ba6a58",
+      "historical_path": "logs/evaluation/iteration_4.yaml",
+      "file": "originals/23e44648a28e41b628457f77a7aad2d480ba6a58--logs__evaluation__iteration_4.yaml",
+      "sha256": "064f4583f8278608a5a8a65de3135acb63a353648ad201af027297c26684c9d0",
+      "bytes": 489,
+      "earliest_changing_commit": "39eb15e08599bb5ec09487b3220794f4c8e4a78b",
+      "committed_at": "2025-05-12T21:32:05Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 1,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "6cd7fbbe0e0f6da11ddd9c0a9ca290ae49c4abc3",
+      "historical_path": "results/iteration_1.yaml",
+      "file": "originals/6cd7fbbe0e0f6da11ddd9c0a9ca290ae49c4abc3--results__iteration_1.yaml",
+      "sha256": "7d4908f863a9e732bc0a1cd8b3ecb63523179cf3f0b99706795c9b8ec3a7ee17",
+      "bytes": 1445,
+      "earliest_changing_commit": "48e338b43e28f3622e1b15258f3efc7e009504e4",
+      "committed_at": "2025-05-11T22:08:10Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 3,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "4bee083e068ead53370b39bafed2aeccaefa15f6",
+      "historical_path": "results/iteration_2.yaml",
+      "file": "originals/4bee083e068ead53370b39bafed2aeccaefa15f6--results__iteration_2.yaml",
+      "sha256": "5b4a1217d15b39f7ea98c611bc6d61c3e888899969e40b1ee7a11b9957043f57",
+      "bytes": 1445,
+      "earliest_changing_commit": "48e338b43e28f3622e1b15258f3efc7e009504e4",
+      "committed_at": "2025-05-11T22:08:10Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 3,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "d4b41a9c783dd4f07dc4d2c9bad07368bdc96f53",
+      "historical_path": "results/iteration_3.yaml",
+      "file": "originals/d4b41a9c783dd4f07dc4d2c9bad07368bdc96f53--results__iteration_3.yaml",
+      "sha256": "4a4ed10728791cbda52bbbaa861236e576b15e9713eaf87e17698988a66dbd09",
+      "bytes": 963,
+      "earliest_changing_commit": "48e338b43e28f3622e1b15258f3efc7e009504e4",
+      "committed_at": "2025-05-11T22:08:10Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 2,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "ba4bc9ca64fd2779340eb523c1ce7fdcd4ebb8ce",
+      "historical_path": "evaluate/results/evaluation_iteration_1.yaml",
+      "file": "originals/ba4bc9ca64fd2779340eb523c1ce7fdcd4ebb8ce--evaluate__results__evaluation_iteration_1.yaml",
+      "sha256": "c1500688db0d9baedf7f60da0b89839a0fb22e5fa07279706ee37401d08c5a6b",
+      "bytes": 22232,
+      "earliest_changing_commit": "72d679d6b4a29cd196c67ca55aa5d2923a64e357",
+      "committed_at": "2025-05-10T03:11:58Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 41,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "4275d843b5837c9c8d3840573fc0859de5aa3d08",
+      "historical_path": "evaluate/results/evaluation_iteration_2.yaml",
+      "file": "originals/4275d843b5837c9c8d3840573fc0859de5aa3d08--evaluate__results__evaluation_iteration_2.yaml",
+      "sha256": "85599cc65df0d323aa9f5153d12a2391be48d5cf9b3e720b2211b9642a2ee27d",
+      "bytes": 21233,
+      "earliest_changing_commit": "ed71ae86d59e7860a81c9deddf335f697b7a67e3",
+      "committed_at": "2025-04-30T08:09:48Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 39,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "b931a5ac86161c46a3d069049a5a5c37c196bb41",
+      "historical_path": "evaluate/results/evaluation_iteration_3.yaml",
+      "file": "originals/b931a5ac86161c46a3d069049a5a5c37c196bb41--evaluate__results__evaluation_iteration_3.yaml",
+      "sha256": "887389b93e02b3a01f0c0261b24fee460fba659e7aefb95fe19ee2c9fd031d8c",
+      "bytes": 14099,
+      "earliest_changing_commit": "72d679d6b4a29cd196c67ca55aa5d2923a64e357",
+      "committed_at": "2025-05-10T03:11:58Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 26,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "5e3fa482e0eb3c6b04302292b505ab096c7fc0e5",
+      "historical_path": "evaluate/results/evaluation_iteration_4.yaml",
+      "file": "originals/5e3fa482e0eb3c6b04302292b505ab096c7fc0e5--evaluate__results__evaluation_iteration_4.yaml",
+      "sha256": "eff3bfb7b4a4f8663b715c298e8fb0009fc5d24912b02c071e96c2fec607cb32",
+      "bytes": 25044,
+      "earliest_changing_commit": "ed71ae86d59e7860a81c9deddf335f697b7a67e3",
+      "committed_at": "2025-04-30T08:09:48Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 46,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "f3f7d330a1a59296a850146bdfcea99f4c717313",
+      "historical_path": "evaluate/results/evaluation_iteration_1.yaml",
+      "file": "originals/f3f7d330a1a59296a850146bdfcea99f4c717313--evaluate__results__evaluation_iteration_1.yaml",
+      "sha256": "f8f8f17dd3929d64d3e934892f07acf23a1cd23fe12f81dac78eaaf84d386244",
+      "bytes": 21231,
+      "earliest_changing_commit": "ed71ae86d59e7860a81c9deddf335f697b7a67e3",
+      "committed_at": "2025-04-30T08:09:48Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 39,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "2cb9d028b7f3aaa5941d84b0ca85dfdbdccd6a85",
+      "historical_path": "evaluate/results/evaluation_iteration_3.yaml",
+      "file": "originals/2cb9d028b7f3aaa5941d84b0ca85dfdbdccd6a85--evaluate__results__evaluation_iteration_3.yaml",
+      "sha256": "786e9eee255a2571c90a426ad1310cc518c290fa85cac6af689cc667dac2a1ca",
+      "bytes": 13598,
+      "earliest_changing_commit": "4df87d1daaee45c0e856bc7c5e15d3078df95522",
+      "committed_at": "2025-05-03T05:43:40Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 25,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "3aa921b9c7ee6c7f9f56bc3db88943a13e716806",
+      "historical_path": "evaluate/results/evaluation_iteration_3.yaml",
+      "file": "originals/3aa921b9c7ee6c7f9f56bc3db88943a13e716806--evaluate__results__evaluation_iteration_3.yaml",
+      "sha256": "9d03c2371a5217aae03086806a4f4a3fd23a12fb961be378665b276157b6b216",
+      "bytes": 25042,
+      "earliest_changing_commit": "ed71ae86d59e7860a81c9deddf335f697b7a67e3",
+      "committed_at": "2025-04-30T08:09:48Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 46,
+      "parsing_repairs": [
+        {
+          "line": 837,
+          "original": "  - accuracy: 0.31643002028397565",
+          "parsed_as": "- accuracy: 0.31643002028397565"
+        },
+        {
+          "line": 856,
+          "original": "  accuracy: 0.4989457037427517",
+          "parsed_as": "- accuracy: 0.4989457037427517"
+        }
+      ]
+    },
+    {
+      "git_blob": "19c181da23a523eb8ff49e6c8f0a7ce034a5573b",
+      "historical_path": "evaluate/results/evaluation_iteration_1.yaml",
+      "file": "originals/19c181da23a523eb8ff49e6c8f0a7ce034a5573b--evaluate__results__evaluation_iteration_1.yaml",
+      "sha256": "68d43e14863ca60fe8f065194cb2bf6ec9247d5c07af3678dfee25703d42e0e3",
+      "bytes": 18510,
+      "earliest_changing_commit": "07bf8d4b3c02bcc45187c8e3522530a3661bea11",
+      "committed_at": "2025-04-30T01:36:12Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 34,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "71ae84764cfbd078e2ddff37c8cd4b1e6f40d3ae",
+      "historical_path": "evaluate/results/evaluation_iteration_2.yaml",
+      "file": "originals/71ae84764cfbd078e2ddff37c8cd4b1e6f40d3ae--evaluate__results__evaluation_iteration_2.yaml",
+      "sha256": "b792369742960ede988a0249a97abd9889b354ff7aa7429c6582a62309a323a1",
+      "bytes": 19060,
+      "earliest_changing_commit": "07bf8d4b3c02bcc45187c8e3522530a3661bea11",
+      "committed_at": "2025-04-30T01:36:12Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 35,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "b598af3ee365b3a74eacbe0651c2b54be3cbcf8d",
+      "historical_path": "evaluate/results/evaluation_iteration_3.yaml",
+      "file": "originals/b598af3ee365b3a74eacbe0651c2b54be3cbcf8d--evaluate__results__evaluation_iteration_3.yaml",
+      "sha256": "d96d0f11315a0d739c3485c1f31058655ac4bbc71a8cdedbfc457741ea219db4",
+      "bytes": 21232,
+      "earliest_changing_commit": "07bf8d4b3c02bcc45187c8e3522530a3661bea11",
+      "committed_at": "2025-04-30T01:36:12Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 39,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "c8a9fbd57ab780a5b2a7a56d0fbf83c0ed8aacc6",
+      "historical_path": "evaluate/results/evaluation_iteration_4.yaml",
+      "file": "originals/c8a9fbd57ab780a5b2a7a56d0fbf83c0ed8aacc6--evaluate__results__evaluation_iteration_4.yaml",
+      "sha256": "6cbd4e47eeba84297a2afeb1c81b926488132254edbff5d5e4f926f858cc4340",
+      "bytes": 21236,
+      "earliest_changing_commit": "07bf8d4b3c02bcc45187c8e3522530a3661bea11",
+      "committed_at": "2025-04-30T01:36:12Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 39,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "0a42a33278f4ad28ff0e4d1a69a87e96d4cac1cf",
+      "historical_path": "evaluate/results/evaluation_iteration_1.yaml",
+      "file": "originals/0a42a33278f4ad28ff0e4d1a69a87e96d4cac1cf--evaluate__results__evaluation_iteration_1.yaml",
+      "sha256": "f042b2f89f3515765bc1e5bf3682bc7fb9e5c36d255c53cbcf8e9a2f5f14751a",
+      "bytes": 7622,
+      "earliest_changing_commit": "d0244da36c36631deb9f2ec264ddef6f011b8214",
+      "committed_at": "2025-04-29T12:16:36Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 14,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "f1495ebf20755921907b9572777a15b0f07dcb0a",
+      "historical_path": "evaluate/results/evaluation_iteration_2.yaml",
+      "file": "originals/f1495ebf20755921907b9572777a15b0f07dcb0a--evaluate__results__evaluation_iteration_2.yaml",
+      "sha256": "4f722e47039ccac6eb978be36d5e7b9a3582d176e4656287d44a805b6eacd15f",
+      "bytes": 6533,
+      "earliest_changing_commit": "d0244da36c36631deb9f2ec264ddef6f011b8214",
+      "committed_at": "2025-04-29T12:16:36Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 12,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "812f695d3ede3f0cc789ad46e61b69965444ad59",
+      "historical_path": "evaluate/results/evaluation_iteration_3.yaml",
+      "file": "originals/812f695d3ede3f0cc789ad46e61b69965444ad59--evaluate__results__evaluation_iteration_3.yaml",
+      "sha256": "cae6db6c2be7b9af8537a6aba3c867bcacbb2b7330e0b6a5d95e89c203226b2d",
+      "bytes": 7078,
+      "earliest_changing_commit": "d0244da36c36631deb9f2ec264ddef6f011b8214",
+      "committed_at": "2025-04-29T12:16:36Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 13,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "e0497d80a13cccd8bdeb9c9df608353c137680f4",
+      "historical_path": "evaluate/results/evaluation_iteration_4.yaml",
+      "file": "originals/e0497d80a13cccd8bdeb9c9df608353c137680f4--evaluate__results__evaluation_iteration_4.yaml",
+      "sha256": "713216777a9478c000fadaa5d60e669a8238501f9959602f1aaecfc73233d67a",
+      "bytes": 7082,
+      "earliest_changing_commit": "d0244da36c36631deb9f2ec264ddef6f011b8214",
+      "committed_at": "2025-04-29T12:16:36Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 13,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "b33c4a72651dce711826a0d2c6e13e93a76775ed",
+      "historical_path": "results/evaluation_iteration_1.yaml",
+      "file": "originals/b33c4a72651dce711826a0d2c6e13e93a76775ed--results__evaluation_iteration_1.yaml",
+      "sha256": "666b9e51e9d4f7abe1f0a8a1f7c845de08db0c6007d659bbc23f7b5a61f9d00b",
+      "bytes": 466,
+      "earliest_changing_commit": "839ece8b5f26d4b385336a6481b320680955d667",
+      "committed_at": "2025-04-23T09:26:14Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 1,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "ad64a33b415ae9d601be8ffbbcb21c864c47d305",
+      "historical_path": "results/evaluation_iteration_1.yaml",
+      "file": "originals/ad64a33b415ae9d601be8ffbbcb21c864c47d305--results__evaluation_iteration_1.yaml",
+      "sha256": "2630a12f1ffe6c8868f3a688d90c397ccf2df6d02c2769599d15187b44af8860",
+      "bytes": 466,
+      "earliest_changing_commit": "dbdb2845b618d65c59055c90a3d715202da2910b",
+      "committed_at": "2025-04-23T09:08:02Z",
+      "kind": "evaluation_summary_snapshot",
+      "record_count": 1,
+      "parsing_repairs": []
+    },
+    {
+      "git_blob": "0986bb58ee6a8ac927dd87f65bb2769cb8928cd0",
+      "historical_path": "results/create_plots.py",
+      "file": "originals/0986bb58ee6a8ac927dd87f65bb2769cb8928cd0--results__create_plots.py",
+      "sha256": "dd9b0ac60b92bced1e7b711508e1782446fe4057d373bb8185558db2bcbaa07e",
+      "bytes": 3459,
+      "earliest_changing_commit": "7cf4ea9e37ddeb2e92c2bcbbd5a693fa593fa990",
+      "committed_at": "2025-06-10T02:02:20Z",
+      "kind": "literal_plot_source",
+      "array_count": 2
+    },
+    {
+      "git_blob": "9666d034031624338b7b91953783afe33c92b957",
+      "historical_path": "results/create_plots.py",
+      "file": "originals/9666d034031624338b7b91953783afe33c92b957--results__create_plots.py",
+      "sha256": "eb985d4868213e8aa1cdd0caea920a5c722a69e1dde5f5a8c1e410d0f30eabdf",
+      "bytes": 2602,
+      "earliest_changing_commit": "34beeff39133d37b3dda17d850c7766b9002eac9",
+      "committed_at": "2025-05-22T03:17:37Z",
+      "kind": "literal_plot_source",
+      "array_count": 1
+    },
+    {
+      "git_blob": "d3dca3cf3966fe5cf76e34f89008abf134bfa3d4",
+      "historical_path": "results/create_plots.py",
+      "file": "originals/d3dca3cf3966fe5cf76e34f89008abf134bfa3d4--results__create_plots.py",
+      "sha256": "0350ff82ba0ffbdf52ac813cbb948f8036d01c9de61d42af80abb5d5681496f9",
+      "bytes": 2385,
+      "earliest_changing_commit": "e3397e93b78f8d5a836834f5c148a2ee1c33f020",
+      "committed_at": "2025-05-21T07:16:17Z",
+      "kind": "literal_plot_source",
+      "array_count": 1
+    },
+    {
+      "git_blob": "4457f4e1ae3cde79003e8d4752e016afff56d374",
+      "historical_path": "results/create_plots.py",
+      "file": "originals/4457f4e1ae3cde79003e8d4752e016afff56d374--results__create_plots.py",
+      "sha256": "43bccf345c57ea675a144712883f1a6f0c191a0bf07ed1f9b7bbdf886323a46f",
+      "bytes": 2245,
+      "earliest_changing_commit": "3e889b95371034b31d0fd9d557521b24a009d11d",
+      "committed_at": "2025-05-20T23:12:18Z",
+      "kind": "literal_plot_source",
+      "array_count": 1
+    },
+    {
+      "git_blob": "a787d9131090e67d95589140b9e4242555b3b0ef",
+      "historical_path": "evaluate/results/plots/generate_plots.py",
+      "file": "originals/a787d9131090e67d95589140b9e4242555b3b0ef--evaluate__results__plots__generate_plots.py",
+      "sha256": "523bb4af2ff5c4c4aca7d8f23400d81ca3b809ca367e585bf000307773819afd",
+      "bytes": 6777,
+      "earliest_changing_commit": "4df87d1daaee45c0e856bc7c5e15d3078df95522",
+      "committed_at": "2025-05-03T05:43:40Z",
+      "kind": "literal_plot_source",
+      "array_count": 10
+    },
+    {
+      "git_blob": "f98825aaab54a3930c4e6ffd6a512ab0e5ad27a0",
+      "historical_path": "evaluate/results/plots/generate_plots.py",
+      "file": "originals/f98825aaab54a3930c4e6ffd6a512ab0e5ad27a0--evaluate__results__plots__generate_plots.py",
+      "sha256": "fdd83c7612dd84f8c632be4b80daacd31258df97b012c931d2e1ceb66877112d",
+      "bytes": 6070,
+      "earliest_changing_commit": "ed71ae86d59e7860a81c9deddf335f697b7a67e3",
+      "committed_at": "2025-04-30T08:09:48Z",
+      "kind": "literal_plot_source",
+      "array_count": 8
+    },
+    {
+      "git_blob": "5dabdde83eed3fe76e025c38381b3f2d7498b774",
+      "historical_path": "evaluate/results/plots/generate_plots.py",
+      "file": "originals/5dabdde83eed3fe76e025c38381b3f2d7498b774--evaluate__results__plots__generate_plots.py",
+      "sha256": "ef0626c5c58aa2ae3a39d81c5cf73eaf239347f353c8317ac91ca7bd1d94d361",
+      "bytes": 5425,
+      "earliest_changing_commit": "07bf8d4b3c02bcc45187c8e3522530a3661bea11",
+      "committed_at": "2025-04-30T01:36:12Z",
+      "kind": "literal_plot_source",
+      "array_count": 8
+    }
+  ],
+  "derived": [
+    {
+      "file": "evaluation-records.json",
+      "sha256": "12e713a8f16528dd79e76b33e909848f8adef7aa04b9c4a1b1d79ef067c8c3e7",
+      "bytes": 237804
+    },
+    {
+      "file": "plot-arrays.json",
+      "sha256": "5815d536a47e407aa3483070297fa703097b3bda13fae954b4d0f2fcc107d2e4",
+      "bytes": 77433
+    }
+  ],
+  "notes": [
+    "Fixed evidence extraction from public repository history; no inference or rescoring.",
+    "Earliest changing commit identifies git provenance, not necessarily experiment execution.",
+    "YAML versions are cumulative snapshots, not independent repeated trials.",
+    "Final CS224R figure-to-raw-run mapping is not established by these records."
+  ],
+  "summary": {
+    "source_files": 29,
+    "evaluation_yaml_versions": 22,
+    "plotting_source_versions": 7,
+    "snapshot_records": 473,
+    "unique_full_records": 210
+  }
+}

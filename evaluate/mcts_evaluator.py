@@ -1,8 +1,6 @@
 from typing import List, Dict, Tuple, Callable
 import asyncio
-import math
 from utils.mcts_base import MCTSNode, MCTSTree, MCTSForest, RunMCTS
-import yaml
 import os
 from datetime import datetime
 
@@ -66,7 +64,8 @@ class MCTSForest_Evaluate(MCTSForest):
         await super().run_forest()
         accuracies = {}
         for key in self.results:
-            accuracies[key] = sum(self.results[key])/len(self.results[key])
+            outcomes = self.results[key]
+            accuracies[key] = sum(outcomes)/len(outcomes) if outcomes else None
         return accuracies
 
 class RunMCTS_Evaluate(RunMCTS):
@@ -82,14 +81,16 @@ class RunMCTS_Evaluate(RunMCTS):
             batch_size=self.config['batch_size']
         )
 
-    def export_evaluation_results(self, accuracy: float) -> None:
-        """Export evaluation results and configuration as a YAML file."""
+    def export_evaluation_results(self, accuracies: Dict[int, float | None]) -> None:
+        """Export measured per-budget accuracies and denominator accounting."""
+        import yaml
+
         try:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             os.makedirs(self.config['export_data_path'], exist_ok=True)
             file_path = os.path.join(self.config['export_data_path'], f"{timestamp}.yaml")
             
-            result = {**self.config, 'accuracy': accuracy}
+            result = self.evaluation_summary(accuracies)
             
             with open(file_path, 'w') as f:
                 yaml.dump(result, f, default_flow_style=False)
@@ -99,15 +100,32 @@ class RunMCTS_Evaluate(RunMCTS):
             import traceback
             traceback.print_exc()
 
+    def evaluation_summary(self, accuracies: Dict[int, float | None]) -> Dict:
+        """Keep missing work visible rather than claiming it was assessed."""
+        return {
+            **self.config,
+            'accuracy_by_expansions': accuracies,
+            'results_by_expansions': {
+                budget: {
+                    'correct': sum(outcomes),
+                    'completed': len(outcomes),
+                    'requested': len(self.questions),
+                    'uncompleted': len(self.questions) - len(outcomes),
+                }
+                for budget, outcomes in self.forest.results.items()
+            },
+        }
+
     async def _run_implementation(self):
         """Run evaluation and return results."""
         monitor_task = asyncio.create_task(self._monitor_collection([self.forest]))
         try:
             accuracies = await self.forest.run_forest()
-            self.export_evaluation_results(0.0)
+            self.export_evaluation_results(accuracies)
             print("\n" + 20*"=" + "\n")
             for (max_expansions, accuracy) in accuracies.items():
-                print(f"Accuracy for {max_expansions} expansions: {accuracy:.4f}")
+                label = f"{accuracy:.4f}" if accuracy is not None else "unavailable (no completed outcomes)"
+                print(f"Accuracy for {max_expansions} expansions: {label}")
             print("\n" + 20*"=" + "\n")
             return accuracies
         finally:
@@ -115,4 +133,4 @@ class RunMCTS_Evaluate(RunMCTS):
             try:
                 await monitor_task
             except asyncio.CancelledError:
-                pass 
+                pass

@@ -1,18 +1,13 @@
 from typing import Callable, List, Dict, Tuple
-from typing_extensions import Self
 import os
 import time
-import re
 import asyncio
-import requests
-import random
-from graphviz import Digraph
-from IPython.display import Image, display
+from utils.arithmetic import verify_mcts_answer
 
 
 class MCTSNode:
     """Node in Monte Carlo Tree Search"""
-    def __init__(self, state: str, parent: Self | None, visit_count: int, action_value: float, value_estimate: float):
+    def __init__(self, state: str, parent: 'MCTSNode | None', visit_count: int, action_value: float, value_estimate: float):
         self.state = state
         self.parent = parent
         self.children = []
@@ -29,60 +24,14 @@ class MCTSNode:
                              for state, value in state_values])
 
     def evaluate_terminal_state(self, question: str) -> float:
-        """Evaluate if terminal state solves the arithmetic problem"""
+        """Verify the marked final expression with exact rational arithmetic."""
         if not self.is_terminal:
             raise ValueError("Evaluation called on non-terminal state")
-        try:
-            # Extract target and numbers from question
-            question_text = question.strip()
-            target_match = re.search(r'make (-?\d+)', question_text)
-            numbers_match = re.search(r'Use ([\d, ]+) to make', question_text)
-            if not target_match or not numbers_match:
-                return 0.0
-            
-            target = int(target_match.group(1))
-            question_nums = sorted([int(x.strip()) for x in numbers_match.group(1).split(',')])
-            
-            # Extract the line containing "The answer is:"
-            answer_line = None
-            for line in self.state.split('\n'):
-                if "The answer is:" in line:
-                    answer_line = line.strip()
-                    break
-            
-            if not answer_line:
-                return 0.0
-                
-            last_line = answer_line.removeprefix("The answer is: ").removesuffix(".")
-            
-            equation_match = re.search(r'([\d\s+\-*/()]+)\s*=\s*(-?\d+)', last_line)
-            if not equation_match:
-                return 0.0
-            
-            left_side = equation_match.group(1).strip()
-            right_side = int(equation_match.group(2))
-            
-            if right_side != target:
-                return 0.0
-            
-            # Extract all numbers used in the expression
-            expr_nums = sorted([int(n) for n in re.findall(r'\d+', left_side)])
-            
-            # Verify solution
-            try:
-                result = eval(left_side)
-                is_close = abs(result - target) < 1e-6
-                has_correct_nums = expr_nums == question_nums
-                return 1.0 if has_correct_nums and is_close else 0.0
-            except:
-                return 0.0
-        except Exception as e:
-            print(f"Error in evaluate_terminal_state: {e}")
-            return 0.0
+        return float(verify_mcts_answer(question, self.state))
 
     @property
     def favourite_child(self) -> 'MCTSNode':
-        """Return child with highest visit count, breaking ties with Q value"""
+        """Return the child with greatest backed-up Q (historical max-Q rule)."""
         if len(self.children) == 0:
             raise ValueError("Node has no children")
         return max(self.children, key=lambda child: child.action_value)
@@ -112,7 +61,7 @@ class MCTSTree:
             return []
 
     def select_child(self, node: MCTSNode) -> MCTSNode:
-        """Select best child using UCB1 formula"""
+        """Select by Q plus the historical visit-dependent exploration term."""
         ucb1 = lambda child: (child.action_value + 
                             self.c_explore * (node.visit_count ** 0.5) / 
                             (child.visit_count + 1))
@@ -205,6 +154,8 @@ class MCTSTree:
             return
             
         try:
+            from graphviz import Digraph
+
             os.makedirs('visualizations', exist_ok=True)
             q, nodes, values = [self.root], [], []
             while q:

@@ -1,14 +1,10 @@
 from argparse import ArgumentParser
-import requests
-import re
-from datasets import Dataset
 from pathlib import Path
 import shutil
 import json
 from typing import List, Dict
 import random
-import numpy as np
-import matplotlib.pyplot as plt
+from utils.arithmetic import verify_sos_answer
 
 parser = ArgumentParser()
 parser.add_argument("--iter", type=int, required=True)
@@ -18,17 +14,18 @@ parser.add_argument("--mode", type=str, required=True, choices=["gen", "eval_tra
 parser.add_argument("--b", type=int, required=False)
 parser.add_argument("--e", type=int, required=False)
 parser.add_argument("--attemps", type=int, required=False)
-args = parser.parse_args()
 
-########################################################
-sos_port = 8050 + 4*args.gpu + args.port
-sos_data_path = f"data/sos/iteration_{args.iter}/b{args.b}_e{args.e}_a{args.attemps}" if args.mode == "gen" else None
-sos_questions_path = (f"questions/train_{4*args.iter + args.port}.txt" if args.mode == "gen" 
-                     else f"questions/train_{4*(args.iter-1)}.txt" if args.mode == "eval_train" 
-                     else f"questions/dev.txt" if args.mode == "eval_dev" 
-                     else f"questions/test.txt" if args.mode == "eval_test" 
-                     else None)
-########################################################
+
+def configure(parsed_args):
+    """Set historical CLI paths without parsing arguments during import."""
+    global args, sos_port, sos_data_path, sos_questions_path
+    args = parsed_args
+    sos_port = 8050 + 4*args.gpu + args.port
+    sos_data_path = f"data/sos/iteration_{args.iter}/b{args.b}_e{args.e}_a{args.attemps}" if args.mode == "gen" else None
+    sos_questions_path = (f"questions/train_{4*args.iter + args.port}.txt" if args.mode == "gen"
+                         else f"questions/train_{4*(args.iter-1)}.txt" if args.mode == "eval_train"
+                         else "questions/dev.txt" if args.mode == "eval_dev"
+                         else "questions/test.txt")
 
 def print_config():
     print(f"Mode: {args.mode}")
@@ -39,29 +36,12 @@ def print_config():
     print(f"SoS questions path: {sos_questions_path}")
 
 def evaluate_solution(question: str, result: str) -> bool:
-    """Evaluate if terminal state solves the arithmetic problem"""
-    try:
-        target = int(re.search(r'make (-?\d+)', question.strip()).group(1))
-        question_nums = sorted([int(x.strip()) for x in re.search(r'Use ([\d, ]+) to make', question.strip()).group(1).split(',')])
-        
-        start_idx = result.find("<START_ANSWER>") + len("<START_ANSWER>")
-        if start_idx == -1: return False
-        
-        equation_match = re.search(r'([\d\s+\-*/()]+)\s*=\s*(-?\d+)', result[start_idx:])
-        if not equation_match or int(equation_match.group(2)) != target: return False
-        
-        left_side = equation_match.group(1).strip()
-        right_side = int(equation_match.group(2))
-        expr_nums = sorted([int(n) for n in re.findall(r'\d+', left_side)])
-        
-        try:
-            return True if (abs(eval(left_side) - target) < 1e-6 and right_side == target and expr_nums == question_nums) else False
-        except: return False
-    except Exception as e:
-        print(f"Error in evaluate_terminal_state: {e}")
-        return False
+    """Verify the final marked expression using the shared exact checker."""
+    return verify_sos_answer(question, result)
 
 def export_data(data: List[Dict]):
+    from datasets import Dataset
+
     p = Path(sos_data_path); p.parent.mkdir(parents=True, exist_ok=True)
     try:
         old = Dataset.load_from_disk(p).to_list()
@@ -74,6 +54,12 @@ def export_data(data: List[Dict]):
         break
 
 def plot_tokens_usage(stats: Dict):
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    if not stats["correct_tokens_usage"]:
+        print("No correct completions to plot; no token-threshold curve written.")
+        return
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
     
     # Calculate statistics
@@ -92,7 +78,7 @@ def plot_tokens_usage(stats: Dict):
     y_values = [sum(1 for x in stats["correct_tokens_usage"] if x <= t) / (stats["correct"] + stats["incorrect"]) for t in x_values]
     
     ax2.plot(x_values, y_values)
-    ax2.set_title("Accuracy vs Token Usage")
+    ax2.set_title("Correct completions within token threshold")
     ax2.set_xlabel("Token Usage Threshold")
     ax2.set_ylabel("Accuracy")
     ax2.grid(True)
@@ -105,6 +91,8 @@ def plot_tokens_usage(stats: Dict):
     plt.close()
 
 def main_eval():
+    import requests
+
     print_config()
     with open(sos_questions_path, "r") as f:
         questions = ["Q | " + line.strip() + "\n" for line in f]
@@ -137,6 +125,8 @@ def main_eval():
         plot_tokens_usage(stats)
 
 def main_gen():
+    import requests
+
     print_config()
     with open(sos_questions_path, "r") as f:
         questions = ["Q | " + line.strip() + "\n" for line in f]
@@ -179,6 +169,7 @@ def main_gen():
     export_data(gen_data)
 
 if __name__ == "__main__":
+    configure(parser.parse_args())
     if args.mode == "gen":
         main_gen()
     elif args.mode == "eval_train":

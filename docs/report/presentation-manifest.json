@@ -1,0 +1,42 @@
+{
+  "identity": "Presentation revision, 24 October 2026",
+  "scientific_revision": false,
+  "original_report_date": "23 October 2026",
+  "style_version": "angel-publication 1.0 (2026-10-24)",
+  "style_sha256": "b9d8c4d865e43d8f4b32ee6bd5e7515f26b7deee7c9680c1f9441210830db94e",
+  "original_source_zip_sha256": "33be95363a17b7dfb92839237c9f3571b95e0c4e0f3ff1f6395297c02064ddf2",
+  "original_main_source_sha256": "de785b8bfd9e2cc31d9f48b66a3e6b1bb6c63d8f8f34b8aa62f6979d21cec82b",
+  "revised_main_source_sha256": "f2b25e283dd059c2abdcaf1f488d145e871e5e3e0644b65ea65b066bf80c34e6",
+  "revised_pdf_sha256": "4027c501753236d5610d523c9127ab20a1c6696cfbd848805775599bd321a4ea",
+  "pages": 15,
+  "scientific_body_equal_after_declared_layout_wrappers": true,
+  "original_preamble_and_scientific_macros_preserved": true,
+  "all_other_original_files_byte_identical": true,
+  "render_review": {
+    "all_pages_reviewed": true,
+    "render_dpi": 100,
+    "visual_defects_observed": 0
+  },
+  "final_latex_warnings": [],
+  "broken_internal_pdf_links": [],
+  "all_fonts_embedded": true,
+  "new_experiments": 0,
+  "presentation_changes": [
+    "shared title typography",
+    "Overview then Code links",
+    "dated presentation-revision footer; original report date retained",
+    "publicationdiagram around native TikZ diagrams",
+    "search only: newline between the second and third source-path links"
+  ],
+  "input_sha256": {
+    "angel-publication.sty": "b9d8c4d865e43d8f4b32ee6bd5e7515f26b7deee7c9680c1f9441210830db94e",
+    "explicit-versus-learned-search.tex": "f2b25e283dd059c2abdcaf1f488d145e871e5e3e0644b65ea65b066bf80c34e6",
+    "figures/cs224n-capacity-search.png": "8bab7af393ad2019660f51405e6befa2753efe4f395e5c2d8453cde63aed6ede",
+    "figures/cs224n-search-135m.png": "6c13f040acceda1af32a61aa451ede795dfa8216cf0c9efd272efa8db865cc5e",
+    "figures/cs224n-search-1700m.png": "ddfe0b6ddda931777ce8449f5a76eaa13ac01fa25c55bb298d2aaf5a9738ce38",
+    "figures/cs224n-search-360m.png": "fac42ff248ffc92fb54557e7bb9c808fb56f76db50220cabd2f0bdf76e6c53fb",
+    "figures/cs224n-training.png": "fbd696fbdd11daa2497238dea514b75345fd1f5cd7f296e91c3bc633642b67e4",
+    "figures/cs224r-comparison.png": "2d8f4b0b156b6cb12c3fb939c69f877fefff9b38d5ab2f665b48445068f6f6e9",
+    "figures/cs224r-training.png": "90262944281ee37e328138b29f4c43053cdac8b3f2f43398c5d7e7c260dec331"
+  }
+}

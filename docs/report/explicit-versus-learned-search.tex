@@ -49,17 +49,26 @@
 \newcommand{\smallnote}[1]{{\small\color{ink}#1}}
 \newcommand{\takeaway}[1]{\par\smallskip\noindent\colorbox{pale}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\small\textbf{Key distinction.} #1}}\par\smallskip}
 \tikzset{box/.style={draw=rule,fill=pale,rounded corners=2pt,align=center,font=\small\sffamily,inner sep=7pt},flow/.style={-{Stealth[length=2.2mm]},thick,draw=accent},back/.style={-{Stealth[length=2mm]},dashed,draw=accent},label/.style={font=\footnotesize\sffamily,align=center,text=ink}}
+% Presentation revision only. The scientific source and original macros remain.
+\usepackage{angel-publication}
+\PublicationRunningTitle{Explicit versus learned search}
+\PublicationRunningAuthor{Angel Raychev}
+\PublicationStatus{Presentation revision - 24 October 2026}
 \begin{document}
-\thispagestyle{empty}
-{\huge\sffamily\bfseries\color{ink}Explicit versus learned search\par}
+\thispagestyle{plain}
+\begin{center}
+{\PublicationTitleFont Explicit versus learned search\par}
 \vspace{5pt}
-{\Large\sffamily\color{accent}Neural-guided tree search and search-trace learning\par}
-\vspace{13pt}
-{\large Angel Raychev\par}
+{\large Neural-guided tree search and search-trace learning\par}
+\vspace{10pt}
+{\normalsize Angel Raychev\par}
 \smallskip
 {\small A technical retrospective on joint 2025 work with Yalcin Tur and Mihajlo Stojkovic.\par}
-{\small Prepared 23 October 2026\quad\textbullet\quad\href{https://angelraychev.com/explicit-versus-learned-search/}{angelraychev.com}\par}
-\vspace{11pt}
+{\small\color{publicationmuted}Prepared 23 October 2026\par}
+\vspace{6pt}
+\PublicationLinks{https://angelraychev.com/explicit-versus-learned-search/}{https://github.com/RaychevAngel/classical_vs_contextual_search}
+\end{center}
+\vspace{2pt}
 \textbf{Overview.} A language model can participate in search in two different ways: an external program can maintain a tree and ask learned models which branches to expand, or a model can learn to represent exploration inside its own generated sequence. I built a research pipeline connecting these approaches: batched neural-guided tree search, iterative policy and value training, and supervised learning from serialized search traversals. The common intermediate object is a search tree; different projections of that tree become different learning signals.
 
 The experiments connect three levers: improving the learned models, allocating more inference-time search, and teaching a model to generate the search procedure itself. In the earlier Game of 24 study, separately selected search configurations reached reported accuracies of 29.39\%, 53.44\% and 54.58\% for same-size 135M, 360M and 1.7B policy/value pairs. The later generalized-arithmetic study reported a budget-dependent crossover between externally controlled search and traversal-trained models. These observations motivate a joint view of learning and search rather than a single winner determined by model size.
@@ -73,6 +82,7 @@ Both approaches use neural networks. ``Explicit'' does not mean non-neural, and 
 
 \begin{figure}[ht]
 \centering
+\begin{publicationdiagram}
 \begin{tikzpicture}[x=1cm,y=1cm]
 \node[box,text width=1.6cm] (q1) at (0.6,0) {Question};
 \node[box,text width=4.0cm] (tree) at (5.1,0) {External controller\\tree, visits and backed-up values};
@@ -87,6 +97,7 @@ Both approaches use neural networks. ``Explicit'' does not mean non-neural, and 
 \draw[flow] (q2)--(trace);
 \draw[flow] (trace)--(a2);
 \end{tikzpicture}
+\end{publicationdiagram}
 \caption{Two locations for search control and state. The upper answer is selected by the controller using model-guided statistics; the lower answer is emitted by the search-trace-trained model.}
 \label{fig:contrast}
 \end{figure}
@@ -161,13 +172,14 @@ A model interface returns candidate states paired with values. It batches policy
 The interface separates proposal quality and diversity from value quality; policy capacity from evaluator capacity; branching breadth from expansion count; and local model scores from the controller's accumulated evidence.
 More children also create more evaluation work. A value model can misrank a correct continuation. Extra search effort is not useful progress by definition; the complete system must be measured.
 
-\smallnote{Implementation anchors: \src{utils/mcts_base.py}{utils/mcts\_base.py}, \src{utils/policy_value.py}{utils/policy\_value.py}, and \src{evaluate/mcts_evaluator.py}{evaluate/mcts\_evaluator.py}. These links point to the historical source snapshot, not to an unrecorded moving branch.}
+\smallnote{Implementation anchors: \src{utils/mcts_base.py}{utils/mcts\_base.py}, \src{utils/policy_value.py}{utils/policy\_value.py},\newline and \src{evaluate/mcts_evaluator.py}{evaluate/mcts\_evaluator.py}. These links point to the historical source snapshot, not to an unrecorded moving branch.}
 
 \section{Batching a forest instead of waiting on one tree}
 Individual searches have irregular control flow: one prefix needs expansion, another is waiting for a response, and a third has reached a terminal answer. Running each question as a completely isolated sequence of tiny model requests would couple inference efficiency to that irregularity. The forest abstraction collects expansion work from many trees into a common queue.
 
 \begin{figure}[ht]
 \centering
+\begin{publicationdiagram}
 \begin{tikzpicture}[x=1cm,y=1cm]
 \node[box,text width=2.1cm] (t1) at (1.1,0) {Tree A\\waiting prefix};
 \node[box,text width=2.1cm] (t2) at (1.1,-1.5) {Tree B\\waiting prefix};
@@ -184,6 +196,7 @@ Individual searches have irregular control flow: one prefix needs expansion, ano
 \draw[back] (value.south)|-(reply.east);
 \draw[back] (reply.west)-|(queue.south);
 \end{tikzpicture}
+\end{publicationdiagram}
 \caption{The forest converts independent search-control flows into batched policy and value work, then returns each result to the tree that requested it.}
 \label{fig:forest}
 \end{figure}
@@ -204,6 +217,7 @@ The search tree is not only an inference artifact. The generator projects it int
 
 \begin{figure}[ht]
 \centering
+\begin{publicationdiagram}
 \begin{tikzpicture}[x=1cm,y=1cm]
 \node[box,text width=4.8cm] (tree) at (7.4,0) {Search tree + outcomes\\prefixes and ancestry\\visits and returns};
 \node[box,text width=3.8cm] (p) at (1.6,-2.3) {Policy examples\\accepted terminal paths\\question $\to$ continuation};
@@ -213,6 +227,7 @@ The search tree is not only an inference artifact. The generator projects it int
 \draw[flow] (tree.south)--(v.north);
 \draw[flow] (tree.south)--(s.north);
 \end{tikzpicture}
+\end{publicationdiagram}
 \caption{Three projections of the same search process. A successful path teaches a continuation; a return-labeled prefix teaches an estimate; a traversal teaches how exploration is represented.}
 \label{fig:products}
 \end{figure}
